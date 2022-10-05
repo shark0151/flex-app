@@ -3,10 +3,10 @@
 }
 
 .hideShowToolbar {
-  -webkit-transition: all .5s ease-in-out !important;
-  -moz-transition: all .5s ease-in-out !important;
-  -o-transition: all .5s ease-in-out !important;
-  transition: all .5s ease-in-out !important;
+  -webkit-transition: all .25s ease-in-out !important;
+  -moz-transition: all .25s ease-in-out !important;
+  -o-transition: all .25s ease-in-out !important;
+  transition: all .25s ease-in-out !important;
   
 
 }
