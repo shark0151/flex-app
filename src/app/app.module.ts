@@ -17,6 +17,9 @@ import { FavPageComponent } from './fav-page/fav-page.component';
 
 
 //all you need to do here is import everything and add to imports field
+//run these commands in terminal if on a new environment
+//npm install -g @angular/cli
+//yarn install
 //to create a new component go to terminal and type ng generate component xyz
 @NgModule({
   declarations: [
