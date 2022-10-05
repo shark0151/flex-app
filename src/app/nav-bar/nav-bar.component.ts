@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Nav } from '../interfaces/navbar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -15,7 +16,7 @@ export class NavBarComponent implements OnInit {
   prop: Nav = {
   title:"Test"
   }
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     
@@ -28,7 +29,7 @@ export class NavBarComponent implements OnInit {
 
   mouseEnter(){
     this.autohide = false;
-    
+    clearTimeout(this.interval);
   }
 
   mouseLeave(){
@@ -43,6 +44,11 @@ export class NavBarComponent implements OnInit {
       this.hide = true;
       }
     }, 2000);
+  }
+
+  GoToMovies(){
+    console.log("Go to movies");
+    this.router.navigate(['/', 'home']);
   }
 
 }
