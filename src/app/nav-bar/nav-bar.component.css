@@ -1,11 +1,22 @@
-
-
 .example-spacer {
   flex: 1 1 auto;
 }
 
-.custom-toolbar {
-  color: white;
-  background-color: #673ab7;
-  left: .1em;
+.hideShowToolbar {
+  -webkit-transition: all .5s ease-in-out !important;
+  -moz-transition: all .5s ease-in-out !important;
+  -o-transition: all .5s ease-in-out !important;
+  transition: all .5s ease-in-out !important;
+  position: relative;
+
+}
+
+.hideToolbar {
+  height: 0px;
+  overflow: hidden;
+  color: transparent;
+}
+
+.showToolbar {
+  overflow: hidden;
 }

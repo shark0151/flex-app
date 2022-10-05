@@ -7,6 +7,9 @@ import { Nav } from '../interfaces/navbar';
 })
 export class NavBarComponent implements OnInit {
 
+  autohide = false
+  hide= true;
+  interval: any;
   //you can access properties like this in html e.g. {{title}} or {{prop.title}}
   title = 'Flex';
   prop: Nav = {
@@ -15,6 +18,31 @@ export class NavBarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
+  }
+
+  toggleToolbar(){
+    this.hide = ! this.hide;
+    
+  }
+
+  mouseEnter(){
+    this.autohide = false;
+    
+  }
+
+  mouseLeave(){
+    this.autohide = true;
+    this.setTimer();
+  }
+
+  setTimer(){
+    clearTimeout(this.interval);
+    this.interval = setTimeout(() => {
+      if(this.autohide){
+      this.hide = true;
+      }
+    }, 2000);
   }
 
 }
