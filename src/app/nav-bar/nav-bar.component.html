@@ -1,14 +1,38 @@
 <mat-toolbar color="primary">
-    <button color="black" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-     <mat-icon>menu</mat-icon>
-   </button>
-   <span>{{title}}</span>
-   <span class="example-spacer"></span>
-   <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-     <mat-icon>favorite</mat-icon>
-   </button>
-   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-    <mat-icon>settings</mat-icon>
-  </button>
+  <mat-toolbar-row>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>{{title}}</span>
+    <span class="example-spacer"></span>
+    
+  </mat-toolbar-row>
+
+  <mat-toolbar-row aria-haspopup="true">
+    <button mat-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>favorite</mat-icon>
+      Movies
+      
+       
+        <a routerLink="/home">Movies</a>
+    </button>
+    <button mat-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>favorite</mat-icon>
+      My List
+    </button>
+    <button mat-button class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>favorite</mat-icon>
+      IDK
+    </button>
+
+
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-toolbar-row>
 </mat-toolbar>
 <!-- you would probaby add a empty container here and dynamically change it to whatever component you want to use-->

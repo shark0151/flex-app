@@ -11,8 +11,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
-import { MessagesComponent } from './messages/messages.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FavPageComponent } from './fav-page/fav-page.component';
 
 
 //all you need to do here is import everything and add to imports field
@@ -23,7 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     NavBarComponent,
     HomePageComponent,
     MovieDetailComponent,
-    MessagesComponent
+    FavPageComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [],
   bootstrap: [AppComponent]

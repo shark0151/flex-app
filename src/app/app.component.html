@@ -302,12 +302,13 @@
   }
 </style>
 <!-- Toolbar -->
+
 <!-- Here you give content to the page. See the selector id for components and be sure they are imported in the app.module.ts -->
 <div>
   <app-nav-bar></app-nav-bar>
   <div>
-    <app-home-page></app-home-page>
-    <app-messages></app-messages>
+    <router-outlet></router-outlet>
+    
   </div>
 </div>
 
@@ -467,4 +468,3 @@
 <!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<router-outlet></router-outlet>

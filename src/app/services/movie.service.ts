@@ -12,8 +12,10 @@ export class MovieService {
   //get stuff async
   getMovies(): Observable<Movie[]> {
     const TheMovies = of(MovieList)
-    this.messageService.add('MovieService: It just works');
+    this.messageService.showNotification('MovieService: It just works');
     return TheMovies;
   }
-  constructor(private messageService: MessageService) { }
+  constructor(private messageService: MessageService) { 
+    console.log("movieservice constructor");
+  }
 }
