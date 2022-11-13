@@ -8,12 +8,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
 import { HomePageComponent } from './home-page/home-page.component';
 import { FormsModule } from '@angular/forms';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FavPageComponent } from './fav-page/fav-page.component';
+import { MoviesPageComponent } from './movies-page/movies-page.component';
 
 
 //all you need to do here is import everything and add to imports field
@@ -27,13 +30,16 @@ import { FavPageComponent } from './fav-page/fav-page.component';
     NavBarComponent,
     HomePageComponent,
     MovieDetailComponent,
-    FavPageComponent
+    FavPageComponent,
+    MoviesPageComponent
   ],
   imports: [
     BrowserModule,
     MatToolbarModule,
+    MatCardModule,
     MatIconModule,
     FormsModule,
+    MatGridListModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

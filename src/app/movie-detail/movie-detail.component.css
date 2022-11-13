@@ -1,0 +1,41 @@
+.img-container {
+    position: relative;
+    width: 11vh;
+    height: 16vh;
+    border-radius: 5%;
+}
+
+img {
+    border-radius: 5%;
+    width: 11vh;
+    height: 16vh;
+}
+
+.overlay {
+    width: 11vh;
+    height: 16vh;
+    display: inline-block;
+    color: transparent;
+    background-color: transparent;
+    border-radius: 5%;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    transition: all 0.2s ease-in-out;
+}
+
+.content {
+
+    padding: 5px;
+    text-align: center;
+}
+
+.overlay:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}

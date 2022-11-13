@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar} from '@angular/material/snack-bar';
 import { Component, OnInit ,Input} from '@angular/core';
 
 @Injectable({
@@ -13,6 +13,7 @@ export class MessageService {
     this.message = input;
     this._snackBar.openFromComponent(PizzaPartyComponent, {
       duration: 3 * 1000,
+      panelClass: ['toast-background-dark'],
     });
   }
   constructor(private _snackBar: MatSnackBar) { 
@@ -29,6 +30,7 @@ export class MessageService {
     `
     .example-pizza-party {
       color: hotpink;
+      
     }
   `,
   ],

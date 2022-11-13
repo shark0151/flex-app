@@ -48,6 +48,11 @@ export class NavBarComponent implements OnInit {
 
   GoToMovies(){
     console.log("Go to movies");
+    this.router.navigate(['/', 'movies']);
+  }
+
+  GoHome(){
+    console.log("Go to Home");
     this.router.navigate(['/', 'home']);
   }
 
