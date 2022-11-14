@@ -43,7 +43,7 @@ export class NavBarComponent implements OnInit {
       if(this.autohide){
       this.hide = true;
       }
-    }, 2000);
+    }, 1000);
   }
 
   GoToMovies(){

@@ -18,7 +18,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { FavPageComponent } from './fav-page/fav-page.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 
-
 //all you need to do here is import everything and add to imports field
 //run these commands in terminal if on a new environment
 //npm install -g @angular/cli
@@ -44,7 +43,7 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatExpansionModule
+    MatExpansionModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

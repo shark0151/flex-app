@@ -1,8 +1,3 @@
-<div class="category-container" *ngFor="let cat of categories">
-  <div class="name">{{cat}}</div>
-  <div class="card-container">
-    <div *ngFor="let movie of getMoviesByCategory(cat)">
-      <app-movie-detail [movie]="movie"></app-movie-detail>
-    </div>
-  </div>
+<div *ngFor="let cat of categories">
+  <app-movies-page [category]="cat"></app-movies-page> 
 </div>

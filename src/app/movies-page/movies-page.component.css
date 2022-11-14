@@ -1,14 +1,27 @@
+.card-container {
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  margin: 20px;
+  gap: 3em;
+}
 
-  .card-container {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: left;
-    margin: 20px;
-    gap: 1em;
-  }
+.category-container {
+  margin: 1%;
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  margin: 20px;
+  gap: 1em;
+  color: #fafafa;
+  font-weight: lighter;
+}
 
-  .card {
-    
-    padding: 16px;
-    
-  }
+.category-container .name {
+  font-size: 2em;
+}
+
+.btn {
+  bottom: 0.5em;
+  left: 0.5em;
+}

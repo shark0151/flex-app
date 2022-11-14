@@ -9,10 +9,10 @@ import { Categories } from '../interfaces/categories';
 })
 export class HomePageComponent implements OnInit {
 
-  movies: Movie[] = [];
-  categories: string[] =[];
-  selectedMovie?: Movie;
-  
+
+  categories: string[] = [];
+
+
   constructor(private MovieService: MovieService) { }
 
   ngOnInit(): void {
@@ -22,21 +22,5 @@ export class HomePageComponent implements OnInit {
       }
       //console.log(Categories);
     }
-    this.getMovies();
-  }
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-    console.log(movie);
-  }
-  getMovies(): void {
-    this.MovieService.getMovies().subscribe(returnedObject => this.movies = returnedObject);
-  }
- //deprecated
-  isMovieofCategory(movie: Movie, category: string): boolean {
-    return Categories[movie.category] === category;
-  }
-
-  getMoviesByCategory(param: string): Movie[] {
-    return this.movies.filter(movie => Categories[movie.category] === param);
   }
 }

@@ -1,7 +1,14 @@
+<div class="category-container">
+    <div class="name" *ngIf="category">{{category}}</div>
+    <button mat-icon-button class="btn">
+        <mat-icon (click)="prev()">navigate_before</mat-icon>
+    </button>
+    <button mat-icon-button class="btn">
+        <mat-icon (click)="next()">navigate_next</mat-icon>
+    </button>
+</div>
 <div class="card-container">
-    <div *ngFor="let movie of movies">
+    <div *ngFor="let movie of pageofMovies">
         <app-movie-detail [movie]="movie"></app-movie-detail>
     </div>
 </div>
-
-
