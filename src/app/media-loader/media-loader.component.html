@@ -1,0 +1,16 @@
+<div class="category-container">
+    <div class="name" *ngIf="category">{{category}}</div>
+    <button mat-icon-button class="btn" [ngClass]="hidePrev ? 'disableButton' : 'enableButton'">
+        <mat-icon (click)="prev()">navigate_before</mat-icon>
+    </button>
+    <button mat-icon-button class="btn" [ngClass]="hideNext ? 'disableButton' : 'enableButton'">
+        <mat-icon (click)="next()">navigate_next</mat-icon>
+    </button>
+</div>
+<div class="cdk-virtual-scroll-data-source-example">
+    <cdk-virtual-scroll-viewport orientation="horizontal" itemSize="50" class="example-viewport">
+        <div *cdkVirtualFor="let movie of pageofMovies" class="example-item">
+            <app-movie-detail [movie]="movie"></app-movie-detail>
+        </div>
+    </cdk-virtual-scroll-viewport>
+</div>

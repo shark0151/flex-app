@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Movie } from '../interfaces/movie';
-import { MovieList} from '../interfaces/movieLibrary';
+import { Movie,Series } from '../interfaces/movie';
+import { MovieList, SeriesList} from '../interfaces/movieLibrary';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 
@@ -14,6 +14,13 @@ export class MovieService {
     const TheMovies = of(MovieList)
     this.messageService.showNotification('MovieService: It just works');
     return TheMovies;
+  }
+
+   //get stuff async
+   getSeries(): Observable<Series[]> {
+    const TheSeries = of(SeriesList)
+    this.messageService.showNotification('SeriesService: It just works');
+    return TheSeries;
   }
   constructor(private messageService: MessageService) { 
     console.log("movieservice constructor");

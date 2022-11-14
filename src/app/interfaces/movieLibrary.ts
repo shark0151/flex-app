@@ -1,4 +1,5 @@
-import { Movie } from './movie';
+import { Movie,Series } from './movie';
+
 import { Categories } from "./categories";
 
 export const MovieList: Movie[] = [
@@ -124,3 +125,12 @@ export const MovieList: Movie[] = [
   {title: 'Sonic the Hedgehog 2', poster: 'https://www.themoviedb.org/t/p/w1280/6DrHO1jr3qVrViUO6s6kFiAGM7.jpg', year: 2022, category: Categories.Comedy},
   
 ];
+
+export const SeriesList: Series[] = [
+  {title: 'The Walking Dead', poster: 'https://www.themoviedb.org/t/p/w1280/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg', year: 2010, episodes: 1, category: Categories.Drama},
+  {title: 'The Walking Dead', poster: 'https://www.themoviedb.org/t/p/w1280/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg', year: 2010, episodes: 2, category: Categories.Drama},
+  {title: 'The Walking Dead', poster: 'https://www.themoviedb.org/t/p/w1280/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg', year: 2010, episodes: 3, category: Categories.Drama},
+  {title: 'The Walking Dead', poster: 'https://www.themoviedb.org/t/p/w1280/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg', year: 2010, episodes: 4, category: Categories.Drama},  
+  {title: 'The Walking Dead', poster: 'https://www.themoviedb.org/t/p/w1280/rqeYMLryjcawh2JeRpCVUDXYM5b.jpg', year: 2010, episodes: 5, category: Categories.Drama},
+];
+

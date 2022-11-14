@@ -7,3 +7,9 @@ export interface Movie {
     poster: string;
     category: Categories;
   }
+
+  export interface Series extends Movie {
+    seasons?: 1;
+    endyear?: number;
+    episodes: number;
+  }
