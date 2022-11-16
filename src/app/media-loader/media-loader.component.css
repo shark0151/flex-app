@@ -1,73 +1,87 @@
 .card-container {
-    display: flex;
-    
-    flex-flow: row;
-    justify-content: left;
-    margin: 20px;
-    gap: 3em;
-    writing-mode: vertical-lr;
-  }
-  
-  .category-container {
-    margin: 1%;
-    display: flex;
-    flex-flow: row;
-    justify-content: left;
-    margin: 20px;
-    gap: 1em;
-    color: #fafafa;
-    font-weight: lighter;
-  }
-  
-  .category-container .name {
-    font-size: 2em;
-    user-select: none;
-    pointer-events: none;
-  }
-  
-  .btn {
-    bottom: 0.5em;
-    left: 0.5em;
-  }
+  display: flex;
 
-  .disableButton {
-    pointer-events: none;
-    color: rgba(255, 255, 255, 0.2);
-  }
-  
-  .enableButton {
-    pointer-events: auto;
-    color: #fafafa;
-  }
-
-  .enableDisableButton {
-    -webkit-transition: all .25s ease-in-out !important;
-    -moz-transition: all .25s ease-in-out !important;
-    -o-transition: all .25s ease-in-out !important;
-    transition: all .25s ease-in-out !important;
-    
-  }
-
-  .cdk-virtual-scroll-data-source-example .example-item {
-    width: 100%;
-    height: 100%;
-    writing-mode: horizontal-tb;
-  }
-
-  .cdk-virtual-scroll-data-source-example .example-viewport {
-    height: 20vh;
-    width:  calc(100vw - 20px);
-    margin: 20px;
-    scrollbar-width: none;
-    scroll-behavior: smooth;
-  }
-
-  .cdk-virtual-scroll-data-source-example::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
+  flex-flow: row;
+  justify-content: left;
+  margin: 20px;
+  gap: 3em;
+  writing-mode: vertical-lr;
 }
+
+.category-container {
+  margin: 1%;
+  display: flex;
+  flex-flow: row;
+  justify-content: left;
+  margin: 20px;
+  gap: 1em;
+  color: #fafafa;
+  font-weight: lighter;
+}
+
+.category-container .name {
+  font-size: 2em;
+  user-select: none;
+  pointer-events: none;
+}
+
+.btn {
+  bottom: 0.5em;
+  left: 0.5em;
+}
+
+.disableButton {
+  pointer-events: none;
+  color: rgba(255, 255, 255, 0.2);
+  scale: 1.1;
+}
+
+.enableButton {
+  pointer-events: auto;
+  color: #fafafa;
+  scale: 1.3;
+}
+
+.enableDisableButton {
+  -webkit-transition: all .25s ease-in-out !important;
+  -moz-transition: all .25s ease-in-out !important;
+  -o-transition: all .25s ease-in-out !important;
+  transition: all .25s ease-in-out !important;
+
+}
+
+.cdk-virtual-scroll-data-source-example .example-item {
+  width: 100%;
+  height: 100%;
+  padding-left: 1vh;
+  padding-right: 1vh;
+  padding-top: 0.7vh; /*for the zoom effect*/
+  writing-mode: horizontal-tb;
+}
+
+.cdk-virtual-scroll-data-source-example .example-viewport {
+  height: 17.5vh;  /* size of movie detail */
+  width: calc(100vw);
+  overflow:hidden;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+.cdk-virtual-scroll-data-source-example::-webkit-scrollbar {
+  display: none;
   
-  .cdk-virtual-scroll-data-source-example .example-viewport .cdk-virtual-scroll-content-wrapper {
-    display: flex;
-    flex-direction: row;
-    gap: 3em;    
-  }
+  /* Safari and Chrome */
+}
+
+.cdk-virtual-scroll-data-source-example .example-viewport .cdk-virtual-scroll-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding-left: 1vh;
+  padding-right: 1vh;
+
+}
+
+.mask {
+
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 2%, rgb(0, 0, 0) 98%, rgba(0, 0, 0, 0) 100%);
+}

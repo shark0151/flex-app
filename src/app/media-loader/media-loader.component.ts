@@ -1,14 +1,16 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Movie, Series } from '../interfaces/movie';
 import { MovieService } from '../services/movie.service';
 import { Categories } from '../interfaces/categories';
-import {ChangeDetectionStrategy,ViewEncapsulation} from '@angular/core'; 
+import { ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
 enum PageType {
   Home,
   Movies,
   Series
 }
+
 @Component({
   selector: 'app-media-loader',
   templateUrl: './media-loader.component.html',
@@ -16,9 +18,12 @@ enum PageType {
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MediaLoaderComponent implements OnInit {
+export class MediaLoaderComponent implements OnInit, AfterViewInit {
   @Input() category?: string;
   @Input() pageType: PageType = 0;
+  @ViewChild("virtualScroll", { static: true })
+  public virtualScrollViewport!: CdkVirtualScrollViewport;
+
 
   mediaList: Movie[] = [];
   series: Series[] = [];
@@ -26,43 +31,52 @@ export class MediaLoaderComponent implements OnInit {
   page: number = 0;
   pageSize: number = 12;
   selectedMovie?: Movie;
-  hidePrev: boolean = false;
-  hideNext: boolean = false;
+  hidePrev?: boolean;
+  hideNext?: boolean;
 
-  constructor(private MovieService: MovieService) { }
+  constructor(private MovieService: MovieService, private ref: ChangeDetectorRef) { }
 
-  
+
   ngOnInit(): void {
+
     this.getMedia();
     let numberofPages = Math.floor(this.mediaList.length / this.pageSize);
+
+    this.virtualScrollViewport.elementScrolled()
+      .subscribe(event => {
+        this.OnScroll();
+      });
+
+    
+    this.hideNext = numberofPages == 0;
     this.hidePrev = true;
-    if(numberofPages == 0)
-    {
-      this.hideNext = true;
-    }
+    
   }
+
+  ngAfterViewInit(): void {
+
+
+  }
+
   onSelect(movie: Movie): void {
     this.selectedMovie = movie;
     console.log(movie);
   }
 
   getMedia(): void {
-   
-    if (this.pageType == PageType.Home)
-    {
+
+    if (this.pageType == PageType.Home) {
       this.getMovies();
       this.getSeries();
       this.mediaList = this.mediaList.concat(this.series);
-      this.pageSize = 12;
+      //this.pageSize = 12;
     }
-    else if (this.pageType == PageType.Movies)
-    {
-      this.pageSize = 50;
+    else if (this.pageType == PageType.Movies) {
+      //this.pageSize = 50;
       this.getMovies();
     }
-    else if (this.pageType == PageType.Series)
-    {
-      this.pageSize = 50;
+    else if (this.pageType == PageType.Series) {
+      //this.pageSize = 50;
       this.getSeries();
       this.mediaList = this.mediaList.concat(this.series);
     }
@@ -70,11 +84,11 @@ export class MediaLoaderComponent implements OnInit {
       this.mediaList = this.getMoviesByCategory(this.category);
     }
 
-    this.pageofMovies = this.mediaList;
+    //this.pageofMovies = this.mediaList;
   }
 
   getMovies(): void {
-    this.MovieService.getMovies().subscribe(returnedObject => this.mediaList = returnedObject);    
+    this.MovieService.getMovies().subscribe(returnedObject => this.mediaList = returnedObject);
   }
 
   getSeries(): void {
@@ -89,28 +103,41 @@ export class MediaLoaderComponent implements OnInit {
   }
 
   prev(): void {
-    if (this.page > 0) {
-      this.hideNext = false;
-      this.page--;
-      this.pageofMovies = this.paginateMovies(this.mediaList, this.page, this.pageSize);
-    }
-    if (this.page == 0) {
-      this.hidePrev = true;
-    }
-    
+
+    let viewportSize = this.virtualScrollViewport.getViewportSize();
+    let scrollOffset = this.virtualScrollViewport.measureScrollOffset('right');
+
+
+    this.virtualScrollViewport.scrollTo({
+      right: scrollOffset + viewportSize / 4,
+      behavior: "smooth"
+    })
 
   }
 
   next(): void {
-    if (this.page < Math.floor(this.mediaList.length / this.pageSize) ){
-      this.hidePrev = false;
-      this.page++;
-      this.pageofMovies = this.paginateMovies(this.mediaList, this.page, this.pageSize);
-    }
-    if (this.page >= Math.floor(this.mediaList.length / this.pageSize)) 
-    {
-      this.hideNext = true;
-    }
+
+    let viewportSize = this.virtualScrollViewport.getViewportSize();
+    let scrollOffset = this.virtualScrollViewport.measureScrollOffset('left');
+
+
+    this.virtualScrollViewport.scrollTo({
+      left: scrollOffset + viewportSize / 4,
+      behavior: "smooth"
+    })
+
+  }
+
+  OnScroll(): void {
+
+    let scrollOffsetLeft = this.virtualScrollViewport.measureScrollOffset('left');
+    let scrollOffsetRight = this.virtualScrollViewport.measureScrollOffset('right');
+    let viewportSize = this.virtualScrollViewport.getViewportSize();
+    this.hideNext = scrollOffsetRight == 0;
+    this.hidePrev = scrollOffsetLeft == 0;
+
+
+    this.ref.detectChanges();
   }
 
 }
