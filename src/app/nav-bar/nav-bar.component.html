@@ -1,35 +1,45 @@
 <mat-toolbar class="fixed-navbar" color="primary" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
   <mat-toolbar-row>
-    <button mat-icon-button class="example-icon" aria-label="Expand Menu Button" (click)="toggleToolbar()">
-      <mat-icon>menu</mat-icon>
-    </button>
+    
     <span>{{title}}</span>
     <span class="example-spacer"></span>
-
-  </mat-toolbar-row>
-
-  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
-    <button mat-button class="example-icon" aria-label="Go To Home" (click)="GoHome()">
+    <button mat-button class="button-normal" [ngClass]="url == '/home' ? 'button-highlited' : 'button-normal'" aria-label="Go To Home" (click)="GoHome()">
       <mat-icon>home</mat-icon>
       Home
     </button>
-    <button mat-button class="example-icon" aria-label="Go To Movies" (click)="GoToMovies()">
+    <button mat-button class="button-normal" [ngClass]="url == '/movies' ? 'button-highlited' : 'button-normal'" aria-label="Go To Movies" (click)="GoToMovies()">
       <mat-icon>movie</mat-icon>
       Movies
     </button>
-    <button mat-button class="example-icon" aria-label="Go To Series" (click)="GoToSeries()">
+    <button mat-button class="button-normal" [ngClass]="url == '/series' ? 'button-highlited' : 'button-normal'" aria-label="Go To Series" (click)="GoToSeries()">
       <mat-icon>tv</mat-icon>
       Series
     </button>
+    <button mat-button class="button-normal" [ngClass]="url == '/favourites' ? 'button-highlited' : 'button-normal'" aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+      Favourites
+    </button>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="button-normal" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
+      <mat-icon>settings</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+    
 
 
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
       <mat-icon>settings</mat-icon>
     </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
+      <mat-icon>settings</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
+      <mat-icon>settings</mat-icon>
+    </button>
+    
   </mat-toolbar-row>
 </mat-toolbar>
 <!-- you would probaby add a empty container here and dynamically change it to whatever component you want to use-->

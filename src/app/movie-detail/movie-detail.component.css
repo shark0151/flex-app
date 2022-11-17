@@ -40,18 +40,18 @@ img {
     position: absolute;
     bottom: 0px;
     left: 0px;
-    transition: all 0.2s ease-in-out;
+    transition: all 0.8s ease-in-out;
     
 }
 .overlay:hover {
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-    scale: 1;
+    
 }
 .overlay .highlight:hover {
     color: white;
     background-color: rgba(255, 255, 255, 0.3);
-    scale: 1;
+   
 }
 
 .content {

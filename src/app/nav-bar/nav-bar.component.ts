@@ -10,6 +10,7 @@ export class NavBarComponent implements OnInit {
 
   autohide = false
   hide= true;
+  url ="/home";
   interval: any;
   //you can access properties like this in html e.g. {{title}} or {{prop.title}}
   title = 'Flex';
@@ -19,7 +20,11 @@ export class NavBarComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    
+    this.router.events.subscribe((val) => {
+      console.log(this.router.url);
+      this.url = this.router.url;
+     
+    } );
   }
 
   toggleToolbar(){
@@ -43,7 +48,7 @@ export class NavBarComponent implements OnInit {
       if(this.autohide){
       this.hide = true;
       }
-    }, 1000);
+    }, 500);
   }
 
   GoToMovies(){

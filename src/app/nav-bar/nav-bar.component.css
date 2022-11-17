@@ -7,8 +7,6 @@
   -moz-transition: all .25s ease-in-out !important;
   -o-transition: all .25s ease-in-out !important;
   transition: all .25s ease-in-out !important;
-  
-
 }
 
 .hideToolbar {
@@ -22,9 +20,26 @@
 }
 
 .fixed-navbar {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
+  background-image: linear-gradient(to bottom, #000000 0%, #00000000 100%);
+  
+  background-color: transparent;
+}
+
+.button-highlited{
+  background-image: linear-gradient(to right bottom, #fb00ff 0%, #ff0048 100%);
+  color: #ffffff;
+  scale: 1.1;
+  margin: 10px;
+  transition: all .25s ease-in-out !important;
+}
+
+.button-normal{
+  margin: 10px;
+  color: #ffffff;
+  transition: all .25s ease-in-out !important;
 }
