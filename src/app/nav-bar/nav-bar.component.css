@@ -43,3 +43,15 @@
   color: #ffffff;
   transition: all .25s ease-in-out !important;
 }
+.button-normal:hover{
+  scale: 1.1;
+}
+
+.settings-button{
+  
+  transition: all .5s ease-in-out !important;
+}
+
+.settings-button:hover{
+  transform: rotate(180deg);
+}

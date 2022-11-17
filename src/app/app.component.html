@@ -148,7 +148,7 @@
     margin-left: 60px;
   }
 
-  
+
 
   a,
   a:visited,
@@ -271,11 +271,10 @@
   svg#rocket-smoke {
     height: calc(100vh - 95px);
     position: relative;
-   
+
     right: 180px;
     z-index: -10;
     fill: rgb(22, 22, 22)
-    
   }
 
   /* Responsive Styles */
@@ -308,42 +307,41 @@
     }
   }
 
-  .fade{
-    
+  .fade {
+    height: 15vh;
+    width: 160vw;
+    transform: translateX(-30vw);
+    z-index: -10;
+    background-image: linear-gradient(to right, rgb(117, 0, 45), rgb(99, 0, 130));
+    background-color: black;
+    mask: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0) 70%, transparent 100%);
+  }
+
+  .spacer {
     position: sticky;
     height: 15vh;
-    
     width: 100vw;
-    top: 85vh;
-    left: 0;
-    right: 0;
-    z-index: -10;
-    background-image: linear-gradient(to bottom, rgb(6, 0, 117), rgb(99, 0, 130));
-    background-color: black;
-    mask: linear-gradient(to bottom, rgba(255, 0, 242, 0), rgba(0, 0, 0, 0.5));
-  }
-  .spacer{
-    
-    display: flex;
-    align-items:stretch;
-    flex: 1 1 auto;
-    flex-flow: column
+    top: calc(100vh - 15vh);
+    overflow: hidden;
   }
 </style>
 
 
 
-  <!-- Toolbar -->
-  <div>
-    <app-nav-bar></app-nav-bar>
-    <router-outlet class="content"></router-outlet>
-    
-  </div>
-  <div class="fade"></div>
-  
+<!-- Toolbar -->
+<div>
+  <app-nav-bar></app-nav-bar>
+  <router-outlet class="content"></router-outlet>
 
-  <!-- Here you give content to the page. See the selector id for components and be sure they are imported in the app.module.ts -->
-  
+</div>
+<div class="spacer">
+  <div class="fade"></div>
+</div>
+
+
+
+<!-- Here you give content to the page. See the selector id for components and be sure they are imported in the app.module.ts -->
+
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
