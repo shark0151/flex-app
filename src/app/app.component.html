@@ -314,7 +314,7 @@
     z-index: -10;
     background-image: linear-gradient(to right, rgb(117, 0, 45), rgb(99, 0, 130));
     background-color: black;
-    mask: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0) 70%, transparent 100%);
+    
   }
 
   .spacer {
@@ -323,6 +323,8 @@
     width: 100vw;
     top: calc(100vh - 15vh);
     overflow: hidden;
+    -webkit-mask-image: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0) 70%, transparent 100%);
+    mask-image: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0) 70%, transparent 100%);
   }
 </style>
 
