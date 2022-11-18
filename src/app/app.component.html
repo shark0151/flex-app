@@ -308,21 +308,23 @@
   }
 
   .fade {
+    position: sticky;
     height: 15vh;
     width: 160vw;
     transform: translateX(-30vw);
-    z-index: -10;
+    z-index: -100;
     background-image: linear-gradient(to right, rgb(117, 0, 45), rgb(99, 0, 130));
     background-color: black;
     
   }
 
   .spacer {
-    position: sticky;
+    position: fixed;
     height: 15vh;
     width: 100vw;
     top: calc(100vh - 15vh);
     overflow: hidden;
+    z-index: -100;
     -webkit-mask-image: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0) 70%, transparent 100%);
     mask-image: radial-gradient(ellipse at bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0) 70%, transparent 100%);
   }
