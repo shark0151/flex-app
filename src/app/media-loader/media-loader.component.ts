@@ -8,7 +8,8 @@ import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 enum PageType {
   Home,
   Movies,
-  Series
+  Series,
+  Favorites
 }
 
 @Component({
@@ -24,9 +25,8 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
   @ViewChild("virtualScroll", { static: true })
   public virtualScrollViewport!: CdkVirtualScrollViewport;
 
-
   mediaList: any[] = [];
-  series: Series[] = [];
+  series: any[] = [];
   pageofMovies: Movie[] = [];
   page: number = 0;
   pageSize: number = 12;
@@ -39,7 +39,7 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    this.getMovies();
+    this.getMedia();
     this.virtualScrollViewport.elementScrolled()
       .subscribe(event => {
         this.OnScroll();
@@ -66,32 +66,47 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
       this.getSeries();
       this.mediaList = this.mediaList.concat(this.series);
     }
-    if (this.category) {
-      this.mediaList = this.getMoviesByCategory(this.category);
+    else if (this.pageType == PageType.Favorites) {
+      //this.pageSize = 50;
     }
 
     //this.pageofMovies = this.mediaList;
   }
 
   getMovies(): void {
-    this.MovieService.getMovies().subscribe((data) => {
+    this.MovieService.getMovies(this.category).subscribe((data) => {
       let parse = JSON.parse(JSON.stringify(data));
       this.mediaList = parse.results;
       console.log(this.mediaList);
       let numberofPages = Math.floor(this.mediaList.length / this.pageSize);
       this.hideNext = numberofPages == 0;
       this.hidePrev = true;
+      this.mediaList.forEach((movie) => {
+        if (movie.poster_path != null) { movie.poster_path = this.MovieService.poster_path + movie.poster_path; }
+        else { movie.poster_path = this.MovieService.poster_path + "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg" }
+      });
       this.ref.detectChanges();
     });
-
   }
 
   getSeries(): void {
-    this.MovieService.getSeries().subscribe(returnedObject => this.series = returnedObject);
-  }
+    this.MovieService.getSeries(this.category).subscribe((data) => {
+      let parse = JSON.parse(JSON.stringify(data));
+      this.series = parse.results;
+      this.series.forEach((movie) => {
+        movie.original_title = movie.name;
+        if (movie.poster_path != null) { movie.poster_path = this.MovieService.poster_path + movie.poster_path; }
+        else { movie.poster_path = this.MovieService.poster_path + "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg" }
+        movie.release_date = movie.first_air_date;
+      });
+      this.mediaList = this.mediaList.concat(parse.results);
+      console.log(this.mediaList);
+      let numberofPages = Math.floor(this.mediaList.length / this.pageSize);
+      this.hideNext = numberofPages == 0;
+      this.hidePrev = true;
 
-  getMoviesByCategory(param: Category): Movie[] {
-    return this.mediaList.filter(movie => movie.category == param);
+      this.ref.detectChanges();
+    });
   }
 
   prev(): void {

@@ -1,4 +1,4 @@
-<div class="category-container">
+<div class="category-container" *ngIf="mediaList.length > 0">
     <div class="name" *ngIf="category">{{category.name}}</div>
     <button mat-icon-button class="btn" [ngClass]="hidePrev ? 'disableButton' : 'enableButton'">
         <mat-icon (click)="prev()">navigate_before</mat-icon>

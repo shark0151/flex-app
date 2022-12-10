@@ -14,22 +14,28 @@ export class MovieService {
   api_key = "c92599e7ae08ff763cf0d7f3d7b7590f";
   poster_path = "https://image.tmdb.org/t/p/w500";
   Cat: Category[] = [];
-  li: any;
-  lis = [];
   //get stuff async
-  getMovies(): Observable<any> {
+  getMovies(bla?: Category): Observable<any> {
+    let cat = "";
+    if (bla) {
+      cat = "&with_genres=" + bla?.id;
+    }
+
     return this.httpClient.get
-      ("https://api.themoviedb.org/3/discover/movie?api_key=" + this.api_key + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate");
-    const TheMovies = of(MovieList)
-    this.messageService.showNotification('MovieService: It just works');
-    return TheMovies;
+      ("https://api.themoviedb.org/3/discover/movie?api_key=" + this.api_key + "&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1" + cat + "&with_watch_monetization_types=flatrate");
+
   }
 
   //get stuff async
-  getSeries(): Observable<Series[]> {
-    const TheSeries = of(SeriesList)
-    this.messageService.showNotification('SeriesService: It just works');
-    return TheSeries;
+  getSeries(bla?: Category): Observable<any> {
+    let cat = "";
+    if (bla) {
+      cat = "&with_genres=" + bla?.id;
+    }
+
+    return this.httpClient.get
+      ("https://api.themoviedb.org/3/discover/tv?api_key=" + this.api_key + "&language=en-US&sort_by=popularity.desc&page=1" + cat + "&include_null_first_air_dates=false&with_watch_monetization_types=flatrate&with_status=0&with_type=0");
+
   }
 
   getCategories(): Observable<Category[]> {
