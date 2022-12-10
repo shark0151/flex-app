@@ -70,5 +70,10 @@ export class NavBarComponent implements OnInit {
     console.log("Go to Login");
     this.router.navigate(['/', 'login']);
   }
+
+  GoToFavorites(){
+    console.log("Go to Favs");
+    this.router.navigate(['/', 'favorites']);
+  }
 }
 
