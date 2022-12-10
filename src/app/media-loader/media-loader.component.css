@@ -1,6 +1,5 @@
-
 .category-container {
- 
+
   display: flex;
   flex-flow: row;
   justify-content: left;
@@ -17,7 +16,7 @@
 }
 
 .btn {
-  
+
   left: 0.5em;
 }
 
@@ -46,21 +45,23 @@
   height: 100%;
   padding-left: 1vh;
   padding-right: 1vh;
-  padding-top: 0.7vh; /*for the zoom effect*/
+  padding-top: 1.0vh;
+  /*for the zoom effect*/
   writing-mode: horizontal-tb;
 }
 
 .cdk-virtual-scroll-data-source-example .example-viewport {
-  height: 17.5vh;  /* size of movie detail */
+  height: 26vh;
+  /* size of movie detail */
   width: calc(100vw);
-  overflow:hidden;
+  overflow: hidden;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
 
 .cdk-virtual-scroll-data-source-example::-webkit-scrollbar {
   display: none;
-  
+
   /* Safari and Chrome */
 }
 

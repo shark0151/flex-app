@@ -1,7 +1,7 @@
 .img-container {
     position: relative;
-    width: 11vh;
-    height: 16vh;
+    width: 17vh;
+    height: 24vh;
     border-radius: 5%;
     transition: all 0.25s ease-in-out;
 }
@@ -12,13 +12,13 @@
 
 img {
     border-radius: 5%;
-    width: 11vh;
-    height: 16vh;
+    width: 17vh;
+    height: 24vh;
 }
 
 .overlay {
-    width: 11vh;
-    height: 16vh;
+    width: 17vh;
+    height: 24vh;
     display: inline-block;
     color: transparent;
     background-color: transparent;
@@ -30,9 +30,9 @@ img {
 }
 
 .overlay .highlight {
-    mask-image: linear-gradient(to right bottom, rgba(0,0,0,0) 0%,rgb(0, 0, 0,0) 45%,rgb(0, 0, 0) 90%, rgba(0,0,0) 100%);
-    width: 11vh;
-    height: 16vh;
+    mask-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, 0) 45%, rgb(0, 0, 0) 90%, rgba(0, 0, 0) 100%);
+    width: 17vh;
+    height: 24vh;
     display: inline-block;
     color: transparent;
     background-color: transparent;
@@ -41,21 +41,23 @@ img {
     bottom: 0px;
     left: 0px;
     transition: all 0.8s ease-in-out;
-    
+
 }
+
 .overlay:hover {
     color: white;
     background-color: rgba(0, 0, 0, 0.6);
-    
+
 }
+
 .overlay .highlight:hover {
     color: white;
     background-color: rgba(255, 255, 255, 0.3);
-   
+
 }
 
 .content {
-    
+
     padding: 5px;
     text-align: center;
 }
