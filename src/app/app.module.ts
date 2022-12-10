@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {ScrollingModule} from '@angular/cdk/scrolling';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
-
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -21,6 +23,7 @@ import { FavPageComponent } from './fav-page/fav-page.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { MediaLoaderComponent } from './media-loader/media-loader.component';
 import { SeriesPageComponent } from './series-page/series-page.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 //all you need to do here is import everything and add to imports field
 //run these commands in terminal if on a new environment
@@ -36,7 +39,8 @@ import { SeriesPageComponent } from './series-page/series-page.component';
     FavPageComponent,
     MoviesPageComponent,
     MediaLoaderComponent,
-    SeriesPageComponent
+    SeriesPageComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +54,12 @@ import { SeriesPageComponent } from './series-page/series-page.component';
     MatButtonModule,
     MatSnackBarModule,
     MatExpansionModule,
-    ScrollingModule
+    ScrollingModule,
+    MatTabsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

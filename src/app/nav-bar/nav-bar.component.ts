@@ -66,5 +66,9 @@ export class NavBarComponent implements OnInit {
     this.router.navigate(['/', 'home']);
   }
 
+  GoToLogin(){
+    console.log("Go to Login");
+    this.router.navigate(['/', 'login']);
+  }
 }
 

@@ -20,15 +20,12 @@
       Favourites
     </button>
     <span class="example-spacer"></span>
-    <button mat-icon-button  aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
+    <button mat-icon-button  aria-label="Example icon-button with share icon" (click)="GoToLogin()">
       <mat-icon class="settings-button">settings</mat-icon>
     </button>
   </mat-toolbar-row>
 
   <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
-    
-
-
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
       <mat-icon>settings</mat-icon>
