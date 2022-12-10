@@ -1,24 +1,16 @@
-export enum Categories {
-    "Action",
-    "Adventure",
-    "Animation",
-    "Biography",
-    "Comedy",
-    "Crime",
-    "Documentary",
-    "Drama",
-    "Family",
-    "Fantasy",
-    "Film-Noir",
-    "History",
-    "Horror",
-    "Music",
-    "Musical",
-    "Mystery",
-    "Romance",
-    "Sci-Fi",
-    "Sport",
-    "Thriller",
-    "War",
-    "Western"
+import { Observable } from "rxjs";
+
+export class Categories {
+    static categories: Observable<Category>;
+    static getCategories(): Observable<Category> {
+        return Categories.categories;
+    }
+    static setCategories(categories: Observable<Category>) {
+        Categories.categories = categories;
+    }
+}
+
+export interface Category {
+    id: number;
+    name: string;
 }

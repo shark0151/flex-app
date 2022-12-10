@@ -1,4 +1,4 @@
-import { Component, OnInit ,Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../interfaces/movie';
 
 @Component({
@@ -7,11 +7,14 @@ import { Movie } from '../interfaces/movie';
   styleUrls: ['./movie-detail.component.css']
 })
 export class MovieDetailComponent implements OnInit {
-  @Input() movie?: Movie;
+  @Input() movie?: any;
 
   constructor() { }
 
   ngOnInit(): void {
+    if (this.movie) {
+      console.log(this.movie);
+    }
   }
 
 }

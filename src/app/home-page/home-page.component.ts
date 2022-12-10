@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../interfaces/movie';
 import { MovieService } from '../services/movie.service';
-import { Categories } from '../interfaces/categories';
+import { Categories, Category } from '../interfaces/categories';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -10,17 +10,19 @@ import { Categories } from '../interfaces/categories';
 export class HomePageComponent implements OnInit {
 
 
-  categories: string[] = [];
+  categories: Category[] = [];
 
 
   constructor(private MovieService: MovieService) { }
 
   ngOnInit(): void {
-    for (let category in Categories) {
-      if (isNaN(Number(category))) {
+    this.MovieService.getCategories().subscribe((data) => {
+      let parse = JSON.parse(JSON.stringify(data));
+      Categories.setCategories(parse.genres);
+      Categories.categories.forEach((category) => {
         this.categories.push(category);
-      }
-      //console.log(Categories);
-    }
+      });
+      console.log(this.categories);
+    });
   }
 }

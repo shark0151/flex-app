@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import { Movie, Series } from '../interfaces/movie';
 import { MovieService } from '../services/movie.service';
-import { Categories } from '../interfaces/categories';
+import { Categories, Category } from '../interfaces/categories';
 import { ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 
@@ -19,13 +19,13 @@ enum PageType {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MediaLoaderComponent implements OnInit, AfterViewInit {
-  @Input() category?: string;
+  @Input() category?: Category;
   @Input() pageType: PageType = 0;
   @ViewChild("virtualScroll", { static: true })
   public virtualScrollViewport!: CdkVirtualScrollViewport;
 
 
-  mediaList: Movie[] = [];
+  mediaList: any[] = [];
   series: Series[] = [];
   pageofMovies: Movie[] = [];
   page: number = 0;
@@ -39,28 +39,14 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
 
-    this.getMedia();
-    let numberofPages = Math.floor(this.mediaList.length / this.pageSize);
-
+    this.getMovies();
     this.virtualScrollViewport.elementScrolled()
       .subscribe(event => {
         this.OnScroll();
       });
-
-    
-    this.hideNext = numberofPages == 0;
-    this.hidePrev = true;
-    
   }
 
   ngAfterViewInit(): void {
-
-
-  }
-
-  onSelect(movie: Movie): void {
-    this.selectedMovie = movie;
-    console.log(movie);
   }
 
   getMedia(): void {
@@ -88,18 +74,24 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
   }
 
   getMovies(): void {
-    this.MovieService.getMovies().subscribe(returnedObject => this.mediaList = returnedObject);
+    this.MovieService.getMovies().subscribe((data) => {
+      let parse = JSON.parse(JSON.stringify(data));
+      this.mediaList = parse.results;
+      console.log(this.mediaList);
+      let numberofPages = Math.floor(this.mediaList.length / this.pageSize);
+      this.hideNext = numberofPages == 0;
+      this.hidePrev = true;
+      this.ref.detectChanges();
+    });
+
   }
 
   getSeries(): void {
     this.MovieService.getSeries().subscribe(returnedObject => this.series = returnedObject);
   }
-  paginateMovies(movies: Movie[], page: number, pageSize: number): Movie[] {
-    return movies.slice((page) * pageSize, (page) * pageSize + pageSize);
-  }
 
-  getMoviesByCategory(param: string): Movie[] {
-    return this.mediaList.filter(movie => Categories[movie.category] === param);
+  getMoviesByCategory(param: Category): Movie[] {
+    return this.mediaList.filter(movie => movie.category == param);
   }
 
   prev(): void {
