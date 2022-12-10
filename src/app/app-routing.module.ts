@@ -4,7 +4,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { SeriesPageComponent } from './series-page/series-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-
+import { FavPageComponent } from './fav-page/fav-page.component';
 
 //generated with: ng generate module app-routing --flat --module=app
 const routes: Routes = [
@@ -12,11 +12,12 @@ const routes: Routes = [
   { path: 'movies', component: MoviesPageComponent },
   { path: 'series', component: SeriesPageComponent },
   { path: 'login', component: LoginPageComponent },
+  { path: 'favorites', component: FavPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

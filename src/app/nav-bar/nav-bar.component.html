@@ -15,7 +15,7 @@
       <mat-icon>tv</mat-icon>
       Series
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/favourites' ? 'button-highlited' : 'button-normal'" aria-label="Example icon-button with heart icon">
+    <button mat-button class="button-normal" [ngClass]="url == '/favorites' ? 'button-highlited' : 'button-normal'" aria-label="Example icon-button with heart icon" (click)="GoToFavorites()">
       <mat-icon>favorite</mat-icon>
       Favourites
     </button>
