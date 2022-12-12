@@ -1,5 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Movie } from '../interfaces/movie';
+import { Overlay } from '@angular/cdk/overlay';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { MovieOverlayComponent } from '../movie-overlay/movie-overlay.component';
 
 @Component({
   selector: 'app-movie-detail',
@@ -8,13 +11,38 @@ import { Movie } from '../interfaces/movie';
 })
 export class MovieDetailComponent implements OnInit {
   @Input() movie?: any;
-
-  constructor() { }
+  constructor(private overlay: Overlay) { }
 
   ngOnInit(): void {
     if (this.movie) {
       console.log(this.movie);
     }
+  }
+
+  openPopup() 
+  {
+    const overlayRef = this.overlay.create({
+      hasBackdrop: true,
+      positionStrategy: this.overlay.position()
+        .global()
+        .centerHorizontally()
+        .centerVertically()
+      ,
+      width: '200px',
+      maxHeight: 300,
+    });
+    const popupComponentPortal = new ComponentPortal(MovieOverlayComponent);
+
+    const componentRef  = overlayRef.attach(popupComponentPortal);
+    componentRef.instance.movie = this.movie;
+
+    overlayRef.backdropClick().subscribe(() => {
+      overlayRef.dispose();
+    });
+
+    setTimeout(() => {
+
+    }, 5000);
   }
 
 }

@@ -1,11 +1,13 @@
-<div *ngIf="movie" class="img-container">
-    <img src="{{movie.poster_path}}">
-    <div class="overlay">
-        <span class="example-spacer"></span>
-        <div class="content">
-            <div>{{movie.original_title}}</div>
-            <div>{{movie.release_date}}</div>
+<div (click)="openPopup()">
+    <div *ngIf="movie" class="img-container">
+        <img src="{{movie.poster_path}}">
+        <div class="overlay">
+            <span class="example-spacer"></span>
+            <div class="content">
+                <div>{{movie.original_title}}</div>
+                <div>{{movie.release_date}}</div>
+            </div>
+            <div class="highlight"> </div>
         </div>
-        <div class="highlight"> </div>
     </div>
 </div>

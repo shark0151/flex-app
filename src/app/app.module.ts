@@ -25,6 +25,7 @@ import { MoviesPageComponent } from './movies-page/movies-page.component';
 import { MediaLoaderComponent } from './media-loader/media-loader.component';
 import { SeriesPageComponent } from './series-page/series-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { MovieOverlayComponent } from './movie-overlay/movie-overlay.component';
 
 //all you need to do here is import everything and add to imports field
 //run these commands in terminal if on a new environment
@@ -42,6 +43,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MediaLoaderComponent,
     SeriesPageComponent,
     LoginPageComponent,
+    MovieOverlayComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +61,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     MatTabsModule,
     MatFormFieldModule,
     HttpClientModule,
-    MatInputModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent],

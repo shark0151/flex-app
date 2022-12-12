@@ -41,7 +41,7 @@ img {
     bottom: 0px;
     left: 0px;
     transition: all 0.8s ease-in-out;
-
+    
 }
 
 .overlay:hover {
@@ -60,6 +60,7 @@ img {
 
     padding: 5px;
     text-align: center;
+    pointer-events: all;
 }
 
 
