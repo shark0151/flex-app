@@ -13,7 +13,8 @@ export class LoginPageComponent implements OnInit {
   user: any;
   isLoggedIn = false;
   isLoginFailed = false;
-  constructor(private storageService: StorageService, private fb: FormBuilder) {
+  errorMessage = '';
+  constructor(private flexApi: FlexApiService, private storageService: StorageService, private fb: FormBuilder) {
     this.loginForm = fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
@@ -33,11 +34,35 @@ export class LoginPageComponent implements OnInit {
   Login(): void {
     this.user = this.loginForm.value;
     console.log(this.user);
+    this.flexApi.login(this.user.username, this.user.password).subscribe({
+      next: data => {
+        this.storageService.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+        console.log(this.errorMessage);
+      }
+    });
   }
 
   Signup(): void {
     this.user = this.signupForm.value;
     console.log(this.user);
+    this.flexApi.signup(this.user.username, this.user.password).subscribe({
+      next: data => {
+        this.storageService.saveUser(data);
+        this.isLoginFailed = false;
+        this.isLoggedIn = true;
+      },
+      error: err => {
+        this.errorMessage = err.error.message;
+        this.isLoginFailed = true;
+        console.log(this.errorMessage);
+      }
+    });
   }
 
 
