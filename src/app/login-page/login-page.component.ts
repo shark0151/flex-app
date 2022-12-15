@@ -39,6 +39,7 @@ export class LoginPageComponent implements OnInit {
         this.storageService.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        console.log(data);
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -56,6 +57,7 @@ export class LoginPageComponent implements OnInit {
         this.storageService.saveUser(data);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
+        console.log(data);
       },
       error: err => {
         this.errorMessage = err.error.message;
@@ -65,5 +67,8 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-
+  Logout(): void {
+    this.storageService.logout();
+    this.isLoggedIn = false;
+  }
 }

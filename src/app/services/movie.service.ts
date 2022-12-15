@@ -26,6 +26,17 @@ export class MovieService {
 
   }
 
+  getDetails(id: number, TV: boolean): Observable<any> {
+    if (TV) {
+      return this.httpClient.get
+        ("https://api.themoviedb.org/3/tv/" + id + "?api_key=" + this.api_key + "&language=en-US");
+    }
+    else {
+    return this.httpClient.get
+      ("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + this.api_key + "&language=en-US");
+    }
+  }
+
   //get stuff async
   getSeries(bla?: Category): Observable<any> {
     let cat = "";

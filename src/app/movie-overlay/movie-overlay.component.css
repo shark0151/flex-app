@@ -1,0 +1,12 @@
+.movie-card {
+    margin: auto;
+    position: absolute;
+    width: 50vw;
+    height: 95vh;
+    bottom: 0vh;
+    border-radius: 1%;
+    padding: 0;
+    margin: 0;
+    left: 25vw;
+    transition: all 0.25s ease-in-out;
+}

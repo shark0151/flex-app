@@ -45,5 +45,7 @@ export class StorageService {
   public logout(): void {
     window.sessionStorage.removeItem('token');
     window.sessionStorage.removeItem(USER_KEY);
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 }

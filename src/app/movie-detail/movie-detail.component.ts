@@ -28,6 +28,7 @@ export class MovieDetailComponent implements OnInit {
         .centerHorizontally()
         .centerVertically()
       ,
+      scrollStrategy: this.overlay.scrollStrategies.block(),
       width: '200px',
       maxHeight: 300,
     });
@@ -35,14 +36,13 @@ export class MovieDetailComponent implements OnInit {
 
     const componentRef  = overlayRef.attach(popupComponentPortal);
     componentRef.instance.movie = this.movie;
-
+    componentRef.instance.overlayRef = overlayRef;
+    
     overlayRef.backdropClick().subscribe(() => {
       overlayRef.dispose();
     });
 
-    setTimeout(() => {
-
-    }, 5000);
+    
   }
 
 }

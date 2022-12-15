@@ -1,1 +1,9 @@
-<p>{{movie.original_title}}</p>
+<div *ngIf="movieDetails">
+    <mat-card class="movie-card">
+
+        <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
+        <p>{{movieDetails.original_title}}</p>
+        <p>{{movieDetails}}</p>
+        <button mat-icon-button (click)="addFavorite()"><mat-icon>favorite</mat-icon></button>
+    </mat-card>
+</div>

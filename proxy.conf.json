@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://flex-api-45ah.onrender.com/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
