@@ -60,18 +60,19 @@ export class MovieService {
   }
 
   addFavorite(movie_id: number, is_TV: boolean): Observable<any> {
-    let user = this.storageService.getUser();
-    console.log(user.user.id);
+    let user = this.storageService.getUser()[0];
+    console.log(user.id);
     return this.httpClient.post("https://flex-api-45ah.onrender.com/favorites", {
-      user_id: user.user.id,
+      user_id: user.id,
       movie_id,
       is_TV
     });
   }
 
-  getFavorites(): Observable<any> {
-    let user = this.storageService.getUser();
-    return this.httpClient.get("https://flex-api-45ah.onrender.com/favorites/" + user.user.id);
+  getFavorites(): Observable<any[]> {
+    let user = this.storageService.getUser()[0];
+    console.log(user);
+    return this.httpClient.get<any[]>("https://flex-api-45ah.onrender.com/favorites/" + user.id);
   }
 
 }

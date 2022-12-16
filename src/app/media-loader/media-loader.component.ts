@@ -4,6 +4,7 @@ import { MovieService } from '../services/movie.service';
 import { Categories, Category } from '../interfaces/categories';
 import { ChangeDetectionStrategy, ViewEncapsulation } from '@angular/core';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { lastValueFrom } from 'rxjs';
 
 enum PageType {
   Home,
@@ -112,24 +113,36 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
   }
 
   getFavorites(): void {
-    this.MovieService.getFavorites().subscribe((data) => {
-
-      this.mediaList = data.favs;
-      console.log(this.mediaList);
-      this.mediaList.forEach((movie) => {
-        movie.id = movie.movie_id;
-        this.MovieService.getDetails(movie.movie_id, movie.is_TV).subscribe((data) => {
-          let parse = JSON.parse(JSON.stringify(data));
+    const makeRequest = async () => {
+      try {
+        let favorites = await lastValueFrom(this.MovieService.getFavorites());
+        let parse = JSON.parse(JSON.stringify(favorites));
+        this.mediaList = parse.favs;
+        let favdetails = [];
+        for(let i = 0; i < this.mediaList.length; i++)
+        {
+          let movie = this.mediaList[i];
+          movie.id = movie.movie_id;
+          
+          
+          let details = await lastValueFrom(this.MovieService.getDetails(movie.id, movie.is_TV));
+          let parse = JSON.parse(JSON.stringify(details));
           if (parse.poster_path != null) { parse.poster_path = this.MovieService.poster_path + parse.poster_path; }
           else { parse.poster_path = this.MovieService.poster_path + "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg" }
-          movie = parse;
+          favdetails.push(parse);
           
-          this.ref.detectChanges();
-        });
-        
-      });
-      
-    });
+        }
+
+        this.mediaList = favdetails;
+        this.ref.detectChanges();
+        console.log(this.mediaList);
+      }
+      catch (error) {
+        console.log(error);
+      }
+    }
+    makeRequest();
+    
   }
 
   prev(): void {
