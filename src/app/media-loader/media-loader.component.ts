@@ -11,6 +11,7 @@ enum PageType {
   Series,
   Favorites
 }
+//starts at 0
 
 @Component({
   selector: 'app-media-loader',
@@ -68,6 +69,7 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
     }
     else if (this.pageType == PageType.Favorites) {
       //this.pageSize = 50;
+      this.getFavorites();
     }
 
     //this.pageofMovies = this.mediaList;
@@ -105,6 +107,17 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
       this.hideNext = numberofPages == 0;
       this.hidePrev = true;
 
+      this.ref.detectChanges();
+    });
+  }
+
+  getFavorites(): void {
+    this.MovieService.getFavorites().subscribe((data) => {
+      
+      this.mediaList = data;
+      console.log("media list");
+      console.log(this.mediaList);
+      
       this.ref.detectChanges();
     });
   }
