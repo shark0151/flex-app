@@ -24,7 +24,7 @@ export class MovieOverlayComponent implements OnInit {
   ngOnInit(): void {
     this.isTv = this.movie.first_air_date != null;
     this.isLoggedIn = this.storageService.isLoggedIn();
-    this.checkIfAdded();
+    // this.checkIfAdded();
     this.movieService.getDetails(this.movie.id, this.isTv).subscribe({
       next: (data) => {
         let parse = JSON.parse(JSON.stringify(data));
