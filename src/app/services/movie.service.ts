@@ -37,8 +37,8 @@ export class MovieService {
         ("https://api.themoviedb.org/3/tv/" + id + "?api_key=" + this.api_key + "&language=en-US");
     }
     else {
-    return this.httpClient.get
-      ("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + this.api_key + "&language=en-US");
+      return this.httpClient.get
+        ("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + this.api_key + "&language=en-US");
     }
   }
 
@@ -70,19 +70,8 @@ export class MovieService {
   }
 
   getFavorites(): Observable<any> {
-    
-    let favList: Observable<any>[] = [];
     let user = this.storageService.getUser();
-    
-    this.httpClient.get("https://flex-api-45ah.onrender.com/favorites/" + user.user.id).subscribe((data: any) => {
-      data.favs.forEach((element: any) => {
-        this.getDetails(element.movie_id, element.is_TV).subscribe((data: any) => {
-          favList.push(data);
-        });
-      });
-      
-    });
-    return of(favList);
+    return this.httpClient.get("https://flex-api-45ah.onrender.com/favorites/" + user.user.id);
   }
-  
+
 }
