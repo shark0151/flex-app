@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Nav } from '../interfaces/navbar';
 import { Router } from '@angular/router';
-import { StorageService } from '../services/storage.service';
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
   styleUrls: ['./nav-bar.component.css'],
 })
 export class NavBarComponent implements OnInit {
-  isLoggedIn = false;
   autohide = false;
   hide = true;
   url = '/home';
@@ -18,10 +16,9 @@ export class NavBarComponent implements OnInit {
   prop: Nav = {
     title: 'Test',
   };
-  constructor(private router: Router, private storageService: StorageService) {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
-    this.isLoggedIn = this.storageService.isLoggedIn();
     this.router.events.subscribe((val) => {
       console.log(this.router.url);
       this.url = this.router.url;
