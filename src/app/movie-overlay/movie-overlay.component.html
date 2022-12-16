@@ -6,20 +6,22 @@
     <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
-    <div style="padding: 15px">
-      <h1>{{ movieDetails.original_title }}</h1>
-      <p>
-        <b>{{ movieDetails.release_date }}</b>
-      </p>
-      <p class="description">
-        {{ movieDetails.overview }}
-      </p>
-      <p>
-        <i>{{ toHrandMin(movieDetails.runtime) }}</i>
-      </p>
-      <button mat-icon-button (click)="addFavorite()">
-        <mat-icon>favorite</mat-icon>
-      </button>
+    <div class="gradient">
+      <div class="content">
+        <h1>{{ movieDetails.original_title }}</h1>
+        <p>
+          <b>{{ movieDetails.release_date }}</b>
+        </p>
+        <p style="width: 50%">
+          {{ movieDetails.overview }}
+        </p>
+        <p>
+          <i>{{ toHrandMin(movieDetails.runtime) }}</i>
+        </p>
+        <button mat-icon-button (click)="addFavorite()">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-card>
 </div>
@@ -31,27 +33,29 @@
     <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
     </button>
-    <div style="padding: 15px">
-      <h1>{{ movieDetails.name }}</h1>
-      <p>
-        <b>{{ movieDetails.first_air_date }}</b>
-      </p>
-      <p class="description">
-        {{ movieDetails.overview }}
-      </p>
-      <p>
-        <i>
-          {{
-            movieDetails.number_of_seasons +
-              " seasons: " +
-              movieDetails.number_of_episodes +
-              " episodes"
-          }}
-        </i>
-      </p>
-      <button mat-icon-button (click)="addFavorite()">
-        <mat-icon>favorite</mat-icon>
-      </button>
+    <div class="gradient">
+      <div class="content">
+        <h1>{{ movieDetails.name }}</h1>
+        <p>
+          <b>{{ movieDetails.first_air_date }}</b>
+        </p>
+        <p style="width: 50%">
+          {{ movieDetails.overview }}
+        </p>
+        <p>
+          <i>
+            {{
+              movieDetails.number_of_seasons +
+                " seasons: " +
+                movieDetails.number_of_episodes +
+                " episodes"
+            }}
+          </i>
+        </p>
+        <button mat-icon-button (click)="addFavorite()">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-card>
 </div>

@@ -2,7 +2,7 @@
     position: relative;
     width: 17vh;
     height: 24vh;
-    border-radius: 5%;
+    border-radius: 15px;
     transition: all 0.25s ease-in-out;
 }
 
