@@ -1,9 +1,9 @@
 <div *ngIf="movieDetails">
     <mat-card class="movie-card" style="background-image: url({{movieDetails.backdrop_path}})">
-        <button mat-icon-button (click)="close()" style="float: right">
-            <mat-icon class="close-button">close</mat-icon>
-        </button>
         <div class="gradient">
+            <button mat-icon-button (click)="close()" style="float: right">
+                <mat-icon class="close-button">close</mat-icon>
+            </button>
             <div class="content" *ngIf="!isTv">
                 <h1>{{ movieDetails.original_title }}</h1>
                 <p>

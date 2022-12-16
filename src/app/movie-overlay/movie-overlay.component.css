@@ -15,13 +15,14 @@
 .gradient {
   position: absolute;
   bottom: 0;
-  
-  padding-top: 30%;
-  background-image: linear-gradient(to bottom, transparent, black);
+  top:0;
+  background-image: linear-gradient(225deg, transparent, black);
   width: 100%;
   border-radius: 15px;
 }
 .content {
+  position: absolute;
+  bottom: 0;
   padding: 15px;
 }
 .close-button {
