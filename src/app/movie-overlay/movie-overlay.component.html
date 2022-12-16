@@ -1,9 +1,53 @@
-<div *ngIf="movieDetails">
-    <mat-card class="movie-card">
-
-        <button mat-icon-button (click)="close()"><mat-icon>close</mat-icon></button>
-        <p>{{movieDetails.original_title}}</p>
-        <p>{{movieDetails}}</p>
-        <button mat-icon-button (click)="addFavorite()"><mat-icon>favorite</mat-icon></button>
-    </mat-card>
+<div *ngIf="movieDetails && !isTv">
+  <mat-card
+    class="movie-card"
+    style="background-image: url({{ movieDetails.backdrop_path }});"
+  >
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div style="padding: 15px">
+      <h1>{{ movieDetails.original_title }}</h1>
+      <p>
+        <b>{{ movieDetails.release_date }}</b>
+      </p>
+      <p style="background-color: rgba(0,0,0,0.5); border-radius: 5px;">{{ movieDetails.overview }}</p>
+      <p>
+        <i>{{ toHrandMin(movieDetails.runtime) }}</i>
+      </p>
+      <button mat-icon-button (click)="addFavorite()">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </mat-card>
+</div>
+<div *ngIf="movieDetails && isTv">
+  <mat-card
+    class="movie-card"
+    style="background-image: url({{ movieDetails.backdrop_path }})"
+  >
+    <button mat-icon-button (click)="close()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <div style="padding: 15px">
+      <h1>{{ movieDetails.name }}</h1>
+      <p>
+        <b>{{ movieDetails.first_air_date }}</b>
+      </p>
+      <p>{{ movieDetails.overview }}</p>
+      <p>
+        <i>
+          {{
+            movieDetails.number_of_seasons +
+              " seasons: " +
+              movieDetails.number_of_episodes +
+              " episodes"
+          }}
+        </i>
+      </p>
+      <button mat-icon-button (click)="addFavorite()">
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </div>
+  </mat-card>
 </div>
