@@ -95,10 +95,10 @@ export class MovieService {
     );
   }
 
-  removeFavorite(movie_id: number) {
+  removeFavorite(movie_id: number): Observable<any> {
     let user = this.storageService.getUser()[0];
-    console.log(user.user.id);
-    this.httpClient.delete(
+    console.log(user);
+    return this.httpClient.delete(
       'https://flex-api-45ah.onrender.com/favorites/' + user.id + "/" + movie_id
     );
   }

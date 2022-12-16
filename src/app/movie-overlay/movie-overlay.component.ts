@@ -52,9 +52,16 @@ export class MovieOverlayComponent implements OnInit {
   }
 
   removeFavorite() {
-    this.movieService.removeFavorite(this.movie.id);
+    this.movieService.removeFavorite(this.movie.id).subscribe({
+      next: (data) => {
+        console.log(data);
     this.added = false;
     this.ref.detectChanges();
+      },
+      error: (err) => {
+        console.log(err);
+      }
+    });
   }
 
   checkIfAdded() {
