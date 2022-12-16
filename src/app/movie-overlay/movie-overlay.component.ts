@@ -13,13 +13,17 @@ export class MovieOverlayComponent implements OnInit {
   movieDetails?: any;
   overlayRef?: OverlayRef;
   isTv: boolean = false;
+  isLoggedIn?: boolean;
+  added?: boolean;
   constructor(
     private movieService: MovieService,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
     this.isTv = this.movie.first_air_date != null;
+    this.isLoggedIn = this.storageService.isLoggedIn();
     this.movieService.getDetails(this.movie.id, this.isTv).subscribe({
       next: (data) => {
         let parse = JSON.parse(JSON.stringify(data));
@@ -42,6 +46,14 @@ export class MovieOverlayComponent implements OnInit {
         console.log(err);
       },
     });
+  }
+
+  removeFavorite() {
+    this.movieService.removeFavorite(this.movie.id);
+  }
+
+  checkIfAdded() {
+    this.added = true ? true : false;
   }
 
   toHrandMin(tMinutes: number) {

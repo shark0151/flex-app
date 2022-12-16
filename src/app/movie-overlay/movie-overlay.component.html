@@ -7,39 +7,30 @@
       <mat-icon class="close-button">close</mat-icon>
     </button>
     <div class="gradient">
-      <div class="content">
+      <div class="content" *ngIf="movieDetails && !isTv">
         <h1>{{ movieDetails.original_title }}</h1>
         <p>
           <i>{{ movieDetails.release_date }}</i>
         </p>
-        <p style="width: 50%; text-align: justify;">
+        <p style="width: 50%; text-align: justify">
           {{ movieDetails.overview }}
         </p>
         <p>
           <i>{{ toHrandMin(movieDetails.runtime) }}</i>
         </p>
-        <button mat-icon-button (click)="addFavorite()">
+        <button mat-icon-button (click)="addFavorite()" *ngIf="isLoggedIn && !added">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <button mat-icon-button (click)="removeFavorite()" *ngIf="isLoggedIn && added">
           <mat-icon>favorite</mat-icon>
         </button>
       </div>
-    </div>
-  </mat-card>
-</div>
-<div *ngIf="movieDetails && isTv">
-  <mat-card
-    class="movie-card"
-    style="background-image: url({{movieDetails.backdrop_path}})"
-  >
-    <button mat-icon-button (click)="close()" style="float: right">
-      <mat-icon class="close-button">close</mat-icon>
-    </button>
-    <div class="gradient">
-      <div class="content">
+      <div class="content" *ngIf="movieDetails && isTv">
         <h1>{{ movieDetails.name }}</h1>
         <p>
           <i>{{ movieDetails.first_air_date }}</i>
         </p>
-        <p style="width: 50%; text-align: justify;">
+        <p style="width: 50%; text-align: justify">
           {{ movieDetails.overview }}
         </p>
         <p>
@@ -52,7 +43,10 @@
             }}
           </i>
         </p>
-        <button mat-icon-button (click)="addFavorite()">
+        <button mat-icon-button (click)="addFavorite()" *ngIf="isLoggedIn && !added">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <button mat-icon-button (click)="removeFavorite()" *ngIf="isLoggedIn && added">
           <mat-icon>favorite</mat-icon>
         </button>
       </div>
