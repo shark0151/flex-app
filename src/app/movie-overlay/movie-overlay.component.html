@@ -1,7 +1,7 @@
 <div *ngIf="movieDetails && !isTv">
   <mat-card
     class="movie-card"
-    style="background-image: url({{movieDetails.backdrop_path}});"
+    style="background-image: url({{movieDetails.backdrop_path}})"
   >
     <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
@@ -11,7 +11,9 @@
       <p>
         <b>{{ movieDetails.release_date }}</b>
       </p>
-      <p style="background-color: rgba(0,0,0,0.5); border-radius: 5px;">{{ movieDetails.overview }}</p>
+      <p class="description">
+        {{ movieDetails.overview }}
+      </p>
       <p>
         <i>{{ toHrandMin(movieDetails.runtime) }}</i>
       </p>
@@ -34,7 +36,9 @@
       <p>
         <b>{{ movieDetails.first_air_date }}</b>
       </p>
-      <p>{{ movieDetails.overview }}</p>
+      <p class="description">
+        {{ movieDetails.overview }}
+      </p>
       <p>
         <i>
           {{
