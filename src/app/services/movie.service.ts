@@ -96,10 +96,10 @@ export class MovieService {
   }
 
   removeFavorite(movie_id: number) {
-    let user = this.storageService.getUser();
+    let user = this.storageService.getUser()[0];
     console.log(user.user.id);
     this.httpClient.delete(
-      'https://flex-api-45ah.onrender.com/favorites/' + movie_id
+      'https://flex-api-45ah.onrender.com/favorites/' + user.id + "/" + movie_id
     );
   }
 
@@ -109,5 +109,12 @@ export class MovieService {
     return this.httpClient.get<any[]>(
       'https://flex-api-45ah.onrender.com/favorites/' + user.id
     );
+  }
+
+  isFavorite(movie_id:number): Observable<any>{
+    let user = this.storageService.getUser()[0];
+    console.log(user);
+    return this.httpClient.get(
+      'https://flex-api-45ah.onrender.com/favorites/' + user.id + "/" + movie_id);
   }
 }
