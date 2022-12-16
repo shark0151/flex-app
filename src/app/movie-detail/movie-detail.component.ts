@@ -35,6 +35,7 @@ export class MovieDetailComponent implements OnInit {
     const popupComponentPortal = new ComponentPortal(MovieOverlayComponent);
 
     const componentRef  = overlayRef.attach(popupComponentPortal);
+    
     componentRef.instance.movie = this.movie;
     componentRef.instance.overlayRef = overlayRef;
     

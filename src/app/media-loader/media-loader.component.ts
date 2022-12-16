@@ -129,6 +129,9 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
           let parse = JSON.parse(JSON.stringify(details));
           if (parse.poster_path != null) { parse.poster_path = this.MovieService.poster_path + parse.poster_path; }
           else { parse.poster_path = this.MovieService.poster_path + "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg" }
+          if(parse.release_date == null) {
+            parse.release_date = parse.first_air_date;
+          }
           favdetails.push(parse);
           
         }

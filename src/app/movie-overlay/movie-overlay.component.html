@@ -1,55 +1,52 @@
-<div>
-  <mat-card
-    class="movie-card"
-    style="background-image: url({{movieDetails.backdrop_path}})"
-  >
-    <button mat-icon-button (click)="close()" style="float: right">
-      <mat-icon class="close-button">close</mat-icon>
-    </button>
-    <div class="gradient">
-      <div class="content" *ngIf="movieDetails && !isTv">
-        <h1>{{ movieDetails.original_title }}</h1>
-        <p>
-          <i>{{ movieDetails.release_date }}</i>
-        </p>
-        <p style="width: 50%; text-align: justify">
-          {{ movieDetails.overview }}
-        </p>
-        <p>
-          <i>{{ toHrandMin(movieDetails.runtime) }}</i>
-        </p>
-        <button mat-icon-button (click)="addFavorite()" *ngIf="isLoggedIn && !added">
-          <mat-icon>favorite_border</mat-icon>
+<div *ngIf="movieDetails">
+    <mat-card class="movie-card" style="background-image: url({{movieDetails.backdrop_path}})">
+        <button mat-icon-button (click)="close()" style="float: right">
+            <mat-icon class="close-button">close</mat-icon>
         </button>
-        <button mat-icon-button (click)="removeFavorite()" *ngIf="isLoggedIn && added">
-          <mat-icon>favorite</mat-icon>
-        </button>
-      </div>
-      <div class="content" *ngIf="movieDetails && isTv">
-        <h1>{{ movieDetails.name }}</h1>
-        <p>
-          <i>{{ movieDetails.first_air_date }}</i>
-        </p>
-        <p style="width: 50%; text-align: justify">
-          {{ movieDetails.overview }}
-        </p>
-        <p>
-          <i>
-            {{
-              movieDetails.number_of_seasons +
-                " seasons: " +
-                movieDetails.number_of_episodes +
-                " episodes"
-            }}
-          </i>
-        </p>
-        <button mat-icon-button (click)="addFavorite()" *ngIf="isLoggedIn && !added">
-          <mat-icon>favorite_border</mat-icon>
-        </button>
-        <button mat-icon-button (click)="removeFavorite()" *ngIf="isLoggedIn && added">
-          <mat-icon>favorite</mat-icon>
-        </button>
-      </div>
-    </div>
-  </mat-card>
+        <div class="gradient">
+            <div class="content" *ngIf="!isTv">
+                <h1>{{ movieDetails.original_title }}</h1>
+                <p>
+                    <i>{{ movieDetails.release_date }}</i>
+                </p>
+                <p style="width: 50%; text-align: justify">
+                    {{ movieDetails.overview }}
+                </p>
+                <p>
+                    <i>{{ toHrandMin(movieDetails.runtime) }}</i>
+                </p>
+                <button mat-icon-button (click)="addFavorite()" *ngIf="isLoggedIn && !added">
+                    <mat-icon>favorite_border</mat-icon>
+                </button>
+                <button mat-icon-button (click)="removeFavorite()" *ngIf="isLoggedIn && added">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+            <div class="content" *ngIf="isTv">
+                <h1>{{ movieDetails.name }}</h1>
+                <p>
+                    <i>{{ movieDetails.first_air_date }}</i>
+                </p>
+                <p style="width: 50%; text-align: justify">
+                    {{ movieDetails.overview }}
+                </p>
+                <p>
+                    <i>
+                        {{
+                        movieDetails.number_of_seasons +
+                        " seasons: " +
+                        movieDetails.number_of_episodes +
+                        " episodes"
+                        }}
+                    </i>
+                </p>
+                <button mat-icon-button (click)="addFavorite()" *ngIf="isLoggedIn && !added">
+                    <mat-icon>favorite_border</mat-icon>
+                </button>
+                <button mat-icon-button (click)="removeFavorite()" *ngIf="isLoggedIn && added">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+            </div>
+        </div>
+    </mat-card>
 </div>
