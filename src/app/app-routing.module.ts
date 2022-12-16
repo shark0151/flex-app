@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'series', component: SeriesPageComponent },
   { path: 'login', component: LoginPageComponent },
   { path: 'favorites', component: FavPageComponent },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
 ];
 
 @NgModule({
