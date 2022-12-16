@@ -13,7 +13,10 @@ export class MovieOverlayComponent implements OnInit {
   movieDetails?: any;
   overlayRef?: OverlayRef;
   isTv: boolean = false;
-  constructor(private movieService: MovieService, private ref: ChangeDetectorRef) { }
+  constructor(
+    private movieService: MovieService,
+    private ref: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.isTv = this.movie.first_air_date != null;
@@ -22,7 +25,9 @@ export class MovieOverlayComponent implements OnInit {
         let parse = JSON.parse(JSON.stringify(data));
         this.movieDetails = parse;
         console.log(data);
-        this.movieDetails.backdrop_path = "https://image.tmdb.org/t/p/original" + this.movieDetails.backdrop_path;
+        this.movieDetails.backdrop_path =
+          'https://image.tmdb.org/t/p/original' +
+          this.movieDetails.backdrop_path;
         this.ref.detectChanges();
       },
     });
@@ -30,21 +35,21 @@ export class MovieOverlayComponent implements OnInit {
 
   addFavorite() {
     this.movieService.addFavorite(this.movie.id, this.isTv).subscribe({
-      next: data => {
+      next: (data) => {
         console.log(data);
       },
-      error: err => {
+      error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
   toHrandMin(tMinutes: number) {
     const hours = Math.floor(tMinutes / 60);
     const mins = tMinutes % 60;
-    return `${hours}h${mins > 0 ? ` ${mins}m` : ''}`;
+    return `${hours > 0 ? ` ${hours}h` : ''} ${mins > 0 ? ` ${mins}m` : ''}`;
   }
-  
+
   close(): void {
     if (this.overlayRef) this.overlayRef.dispose();
   }

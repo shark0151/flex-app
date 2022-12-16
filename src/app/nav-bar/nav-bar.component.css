@@ -30,7 +30,7 @@
   background-color: transparent;
 }
 
-.button-highlited{
+.button-highlighted{
   background-image: linear-gradient(to right bottom, #fb00ff 0%, #ff0048 100%);
   color: #ffffff;
   scale: 1.1;

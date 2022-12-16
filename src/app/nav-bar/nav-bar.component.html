@@ -3,19 +3,19 @@
     
     <span>{{title}}</span>
     <span class="example-spacer"></span>
-    <button mat-button class="button-normal" [ngClass]="url == '/home' ? 'button-highlited' : 'button-normal'" aria-label="Go To Home" (click)="GoHome()">
+    <button mat-button class="button-normal" [ngClass]="url == '/home' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Home" (click)="GoHome()">
       <mat-icon>home</mat-icon>
       Home
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/movies' ? 'button-highlited' : 'button-normal'" aria-label="Go To Movies" (click)="GoToMovies()">
+    <button mat-button class="button-normal" [ngClass]="url == '/movies' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Movies" (click)="GoToMovies()">
       <mat-icon>movie</mat-icon>
       Movies
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/series' ? 'button-highlited' : 'button-normal'" aria-label="Go To Series" (click)="GoToSeries()">
+    <button mat-button class="button-normal" [ngClass]="url == '/series' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Series" (click)="GoToSeries()">
       <mat-icon>tv</mat-icon>
       Series
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/favorites' ? 'button-highlited' : 'button-normal'" aria-label="Example icon-button with heart icon" (click)="GoToFavorites()">
+    <button mat-button class="button-normal" [ngClass]="url == '/favorites' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Favorites" (click)="GoToFavorites()">
       <mat-icon>favorite</mat-icon>
       Favourites
     </button>
