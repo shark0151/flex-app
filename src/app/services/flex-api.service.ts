@@ -31,10 +31,11 @@ export class FlexApiService {
     return this.http.get(AUTH_API + 'favorites/' + user_id);
   }
 
-  addFavorite(user_id: number, movie_id: number): Observable<any> {
+  addFavorite(user_id: number, movie_id: number, is_TV: boolean): Observable<any> {
     return this.http.post(AUTH_API + 'favorites', {
       user_id,
-      movie_id
+      movie_id,
+      is_TV
     }, httpOptions);
   }
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Movie, Series } from '../interfaces/movie';
-import { MovieList, SeriesList } from '../interfaces/movieLibrary';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
-import { Categories, Category } from '../interfaces/categories';
+import { FlexApiService } from '../services/flex-api.service';
+import { StorageService } from '../services/storage.service';
+import { Category } from '../interfaces/categories';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,11 @@ export class MovieService {
   api_key = "c92599e7ae08ff763cf0d7f3d7b7590f";
   poster_path = "https://image.tmdb.org/t/p/w500";
   Cat: Category[] = [];
+  constructor(private messageService: MessageService, private httpClient: HttpClient, private storageService: StorageService) {
+    console.log("movieservice constructor");
+  }
+
+
   //get stuff async
   getMovies(bla?: Category): Observable<any> {
     let cat = "";
@@ -54,8 +59,30 @@ export class MovieService {
       ("https://api.themoviedb.org/3/genre/movie/list?api_key=" + this.api_key + "&language=en-US", { responseType: 'json' });
   }
 
-  constructor(private messageService: MessageService, private httpClient: HttpClient) {
-    console.log("movieservice constructor");
-
+  addFavorite(movie_id: number, is_TV: boolean): Observable<any> {
+    let user = this.storageService.getUser();
+    console.log(user.user.id);
+    return this.httpClient.post("https://flex-api-45ah.onrender.com/favorites", {
+      user_id: user.user.id,
+      movie_id,
+      is_TV
+    });
   }
+
+  getFavorites(): Observable<any> {
+    
+    let favList: Observable<any>[] = [];
+    let user = this.storageService.getUser();
+    
+    this.httpClient.get("https://flex-api-45ah.onrender.com/favorites/" + user.user.id).subscribe((data: any) => {
+      data.favs.forEach((element: any) => {
+        this.getDetails(element.movie_id, element.is_TV).subscribe((data: any) => {
+          favList.push(data);
+        });
+      });
+      
+    });
+    return of(favList);
+  }
+  
 }

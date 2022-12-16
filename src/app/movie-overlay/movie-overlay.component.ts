@@ -1,5 +1,7 @@
 import { Component, OnInit, Input,ChangeDetectorRef } from '@angular/core';
 import { MovieService } from '../services/movie.service';
+import { FlexApiService } from '../services/flex-api.service';
+import { StorageService } from '../services/storage.service';
 import { OverlayRef  } from '@angular/cdk/overlay';
 @Component({
   selector: 'app-movie-overlay',
@@ -11,7 +13,7 @@ export class MovieOverlayComponent implements OnInit {
   movieDetails?: any;
   overlayRef?: OverlayRef
   isTv: boolean = false;
-  constructor(private movieService: MovieService,private ref: ChangeDetectorRef ) { }
+  constructor(private movieService: MovieService,  private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
 
@@ -33,7 +35,14 @@ export class MovieOverlayComponent implements OnInit {
   }
 
   addFavorite() {
-    
+    this.movieService.addFavorite(this.movie.id, this.isTv).subscribe({
+      next: data => {
+        console.log(data);
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
   }
 
   close():void {
