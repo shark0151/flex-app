@@ -15,7 +15,7 @@
 .gradient {
   position: absolute;
   bottom: 0;
-  background-image: linear-gradient(to bottom, transparent, black);
+  background-image: linear-gradient(to left, transparent, black);
   width: 100%;
   border-radius: 15px;
 }
