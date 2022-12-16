@@ -1,7 +1,7 @@
 <div *ngIf="movieDetails && !isTv">
   <mat-card
     class="movie-card"
-    style="background-image: url({{ movieDetails.backdrop_path }});"
+    style="background-image: url({{movieDetails.backdrop_path}});"
   >
     <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
@@ -24,7 +24,7 @@
 <div *ngIf="movieDetails && isTv">
   <mat-card
     class="movie-card"
-    style="background-image: url({{ movieDetails.backdrop_path }})"
+    style="background-image: url({{movieDetails.backdrop_path}})"
   >
     <button mat-icon-button (click)="close()">
       <mat-icon>close</mat-icon>
