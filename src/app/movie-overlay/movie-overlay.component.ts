@@ -24,7 +24,6 @@ export class MovieOverlayComponent implements OnInit {
   ngOnInit(): void {
     this.isTv = this.movie.first_air_date != null;
     this.isLoggedIn = this.storageService.isLoggedIn();
-    this.checkIfAdded();
     this.movieService.getDetails(this.movie.id, this.isTv).subscribe({
       next: (data) => {
         let parse = JSON.parse(JSON.stringify(data));
@@ -33,6 +32,7 @@ export class MovieOverlayComponent implements OnInit {
         this.movieDetails.backdrop_path =
           'https://image.tmdb.org/t/p/original' +
           this.movieDetails.backdrop_path;
+        this.checkIfAdded();
         this.ref.detectChanges();
       },
     });
@@ -55,12 +55,12 @@ export class MovieOverlayComponent implements OnInit {
     this.movieService.removeFavorite(this.movie.id).subscribe({
       next: (data) => {
         console.log(data);
-    this.added = false;
-    this.ref.detectChanges();
+        this.added = false;
+        this.ref.detectChanges();
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
@@ -72,7 +72,7 @@ export class MovieOverlayComponent implements OnInit {
       },
       error: (err) => {
         console.log(err);
-      }
+      },
     });
   }
 
