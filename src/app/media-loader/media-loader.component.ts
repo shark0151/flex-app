@@ -113,12 +113,22 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
 
   getFavorites(): void {
     this.MovieService.getFavorites().subscribe((data) => {
-      
-      this.mediaList = data;
-      console.log("media list");
+
+      this.mediaList = data.favs;
       console.log(this.mediaList);
+      this.mediaList.forEach((movie) => {
+        movie.id = movie.movie_id;
+        this.MovieService.getDetails(movie.movie_id, movie.is_TV).subscribe((data) => {
+          let parse = JSON.parse(JSON.stringify(data));
+          if (parse.poster_path != null) { parse.poster_path = this.MovieService.poster_path + parse.poster_path; }
+          else { parse.poster_path = this.MovieService.poster_path + "/vbLxDKfo8fYC8ISKKrJczNbGKLP.jpg" }
+          movie = parse;
+          
+          this.ref.detectChanges();
+        });
+        
+      });
       
-      this.ref.detectChanges();
     });
   }
 
