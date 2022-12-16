@@ -3,16 +3,16 @@
     class="movie-card"
     style="background-image: url({{movieDetails.backdrop_path}})"
   >
-    <button mat-icon-button (click)="close()">
-      <mat-icon>close</mat-icon>
+    <button mat-icon-button (click)="close()" style="float: right">
+      <mat-icon class="close-button">close</mat-icon>
     </button>
     <div class="gradient">
       <div class="content">
         <h1>{{ movieDetails.original_title }}</h1>
         <p>
-          <b>{{ movieDetails.release_date }}</b>
+          <i>{{ movieDetails.release_date }}</i>
         </p>
-        <p style="width: 50%">
+        <p style="width: 50%; text-align: justify;">
           {{ movieDetails.overview }}
         </p>
         <p>
@@ -30,16 +30,16 @@
     class="movie-card"
     style="background-image: url({{movieDetails.backdrop_path}})"
   >
-    <button mat-icon-button (click)="close()">
-      <mat-icon>close</mat-icon>
+    <button mat-icon-button (click)="close()" style="float: right">
+      <mat-icon class="close-button">close</mat-icon>
     </button>
     <div class="gradient">
       <div class="content">
         <h1>{{ movieDetails.name }}</h1>
         <p>
-          <b>{{ movieDetails.first_air_date }}</b>
+          <i>{{ movieDetails.first_air_date }}</i>
         </p>
-        <p style="width: 50%">
+        <p style="width: 50%; text-align: justify;">
           {{ movieDetails.overview }}
         </p>
         <p>
