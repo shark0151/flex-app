@@ -68,3 +68,11 @@ img {
 .example-spacer {
     flex: 1 1 auto;
 }
+
+.message {
+    color: rgba(255, 255, 255, 0.10);
+    margin-top: 10%;
+    font-size: 50px;
+    font-weight: normal;
+    text-align: center;
+}
