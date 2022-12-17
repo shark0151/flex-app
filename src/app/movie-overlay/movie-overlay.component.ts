@@ -32,7 +32,8 @@ export class MovieOverlayComponent implements OnInit {
         this.movieDetails.backdrop_path =
           'https://image.tmdb.org/t/p/original' +
           this.movieDetails.backdrop_path;
-        this.checkIfAdded();
+        if(this.isLoggedIn)
+          this.checkIfAdded();
         this.ref.detectChanges();
       },
     });
