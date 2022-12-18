@@ -4,7 +4,8 @@ import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
 const AUTH_API = 'https://flex-api-45ah.onrender.com/';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' , 'Access-Control-Allow-Origin': ['https://flex-api-45ah.onrender.com', 'http://localhost:4200','https://flex-app.onrender.com'],'withCredentials': 'true', 'Access-Control-Allow-Credentials': 'true',observe: 'response' as 'response' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': ['https://flex-api-45ah.onrender.com', 'http://localhost:4200', 'https://flex-app.onrender.com'], 'Access-Control-Allow-Credentials': 'true', observe: 'response' as 'response' }),
+  withCredentials: true
 };
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class FlexApiService {
     return this.http.post(AUTH_API + 'login', {
       name,
       password
-    }, httpOptions );
+    }, httpOptions);
   }
 
   signup(name: string, password: string): Observable<any> {
