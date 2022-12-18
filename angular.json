@@ -63,12 +63,19 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          
           "configurations": {
             "production": {
-              "browserTarget": "flex-app:build:production"
+              "browserTarget": "flex-app:build:production",
+              "headers": {
+                "Content-Security-Policy": "trusted-types angular; require-trusted-types-for 'script';"
+              }
             },
             "development": {
-              "browserTarget": "flex-app:build:development"
+              "browserTarget": "flex-app:build:development",
+              "headers": {
+                "Content-Security-Policy": "trusted-types angular; require-trusted-types-for 'script';"
+              }
             }
           },
           "defaultConfiguration": "development"

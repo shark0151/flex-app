@@ -4,7 +4,7 @@ import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
 const AUTH_API = 'https://flex-api-45ah.onrender.com/';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json' , 'Access-Control-Allow-Origin': '*','withCredentials': 'true', 'Access-Control-Allow-Credentials': 'true' })
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' , 'Access-Control-Allow-Origin': ['https://flex-api-45ah.onrender.com', 'http://localhost:4200','https://flex-app.onrender.com'],'withCredentials': 'true', 'Access-Control-Allow-Credentials': 'true',observe: 'response' as 'response' })
 };
 @Injectable({
   providedIn: 'root'
@@ -37,5 +37,9 @@ export class FlexApiService {
       movie_id,
       is_TV
     }, httpOptions);
+  }
+
+  getcsrf(): Observable<any> {
+    return this.http.get(AUTH_API + 'csrfEndpoint', httpOptions);
   }
 }
