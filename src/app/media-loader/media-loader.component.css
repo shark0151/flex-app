@@ -51,10 +51,9 @@
 }
 
 .cdk-virtual-scroll-data-source-example .example-viewport {
-  height: 26vh;
+  height: 27vh;
   /* size of movie detail */
   width: calc(100vw);
-  overflow: hidden;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }

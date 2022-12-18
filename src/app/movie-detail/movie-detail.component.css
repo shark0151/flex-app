@@ -1,7 +1,7 @@
 .img-container {
     position: relative;
     aspect-ratio: 10/15;
-    width: 16vh;
+    width: 16.5vh;
     transition: all 0.25s ease-in-out;
     border-radius: 15px;
     overflow: hidden;
