@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders,HttpClientXsrfModule } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
 const AUTH_API = 'https://flex-api-45ah.onrender.com/';
@@ -12,7 +12,13 @@ const httpOptions = {
 })
 export class FlexApiService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN',
+    });
+    
+  }
 
   login(name: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', {

@@ -27,6 +27,7 @@ import { MediaLoaderComponent } from './media-loader/media-loader.component';
 import { SeriesPageComponent } from './series-page/series-page.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { MovieOverlayComponent } from './movie-overlay/movie-overlay.component';
+import { HttpClientXsrfModule } from '@angular/common/http';
 
 //all you need to do here is import everything and add to imports field
 //run these commands in terminal if on a new environment
@@ -63,7 +64,8 @@ import { MovieOverlayComponent } from './movie-overlay/movie-overlay.component';
     MatFormFieldModule,
     HttpClientModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientXsrfModule
   ],
   providers: [],
   bootstrap: [AppComponent],
