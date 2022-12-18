@@ -8,12 +8,12 @@ import { FavPageComponent } from './fav-page/fav-page.component';
 
 //generated with: ng generate module app-routing --flat --module=app
 const routes: Routes = [
-  { path: 'home', component: HomePageComponent , redirectTo: 'home', pathMatch: 'full'},
-  { path: 'movies', component: MoviesPageComponent , redirectTo: 'movies', pathMatch: 'full'},
-  { path: 'series', component: SeriesPageComponent , redirectTo: 'series', pathMatch: 'full'},
-  { path: 'login', component: LoginPageComponent, redirectTo: 'login', pathMatch: 'full' },
-  { path: 'favorites', component: FavPageComponent , redirectTo: 'favorites', pathMatch: 'full'},
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomePageComponent},
+  { path: 'movies', component: MoviesPageComponent},
+  { path: 'series', component: SeriesPageComponent},
+  { path: 'login', component: LoginPageComponent},
+  { path: 'favorites', component: FavPageComponent},
+  { path: '', redirectTo: '/home', pathMatch: 'prefix' },
 ];
 
 @NgModule({
