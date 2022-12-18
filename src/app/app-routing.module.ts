@@ -14,6 +14,12 @@ const routes: Routes = [
   { path: 'login', component: LoginPageComponent},
   { path: 'favorites', component: FavPageComponent},
   { path: '', redirectTo: '/home', pathMatch: 'prefix' },
+  { path: 'home', redirectTo: '/home', pathMatch: 'prefix'},
+  { path: 'movies', redirectTo: '/movies', pathMatch: 'prefix'},
+  { path: 'series', redirectTo: '/series', pathMatch: 'prefix'},
+  { path: 'login', redirectTo: '/login', pathMatch: 'prefix'},
+  { path: 'favorites', redirectTo: '/favorites', pathMatch: 'prefix'}
+
 ];
 
 @NgModule({

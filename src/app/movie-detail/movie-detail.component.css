@@ -1,9 +1,10 @@
 .img-container {
     position: relative;
-    width: 17vh;
-    height: 24vh;
-    border-radius: 15px;
+    aspect-ratio: 10/15;
+    width: 16vh;
     transition: all 0.25s ease-in-out;
+    border-radius: 15px;
+    overflow: hidden;
 }
 
 .img-container:hover {
@@ -11,35 +12,34 @@
 }
 
 img {
-    border-radius: 5%;
-    width: 17vh;
-    height: 24vh;
+    width: 100%;
+    height: 100%;
+    bottom: 0px;
+    top: 0px;
 }
 
 .overlay {
-    width: 17vh;
-    height: 24vh;
-    display: inline-block;
+    width: 100%;
+    height: 100%;
     color: transparent;
     background-color: transparent;
-    border-radius: 5%;
+    
     position: absolute;
     bottom: 0px;
-    left: 0px;
+    top : 0px;
     transition: all 0.2s ease-in-out;
 }
 
 .overlay .highlight {
     mask-image: linear-gradient(to right bottom, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0, 0) 45%, rgb(0, 0, 0) 90%, rgba(0, 0, 0) 100%);
-    width: 17vh;
-    height: 24vh;
-    display: inline-block;
+    width: 100%;
+    height: 100%;
     color: transparent;
     background-color: transparent;
-    border-radius: 5%;
+    
     position: absolute;
     bottom: 0px;
-    left: 0px;
+    top: 0px;
     transition: all 0.8s ease-in-out;
     
 }
@@ -58,14 +58,10 @@ img {
 
 .content {
 
-    padding: 5px;
     text-align: center;
     pointer-events: all;
 }
 
 
 
-.example-spacer {
-    flex: 1 1 auto;
-}
 
