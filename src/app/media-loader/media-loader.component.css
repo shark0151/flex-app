@@ -54,11 +54,18 @@
   height: 27vh;
   /* size of movie detail */
   width: calc(100vw);
+  overflow: hidden;
   scrollbar-width: none;
   scroll-behavior: smooth;
 }
 
 .cdk-virtual-scroll-data-source-example::-webkit-scrollbar {
+  display: none;
+
+  /* Safari and Chrome */
+}
+
+.cdk-virtual-scroll-data-source-example::-o-scrollbar {
   display: none;
 
   /* Safari and Chrome */
