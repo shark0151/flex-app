@@ -40,7 +40,4 @@ export class FlexApiService {
     }, httpOptions);
   }
 
-  getcsrf(): Observable<any> {
-    return this.http.get(AUTH_API + 'csrfEndpoint', httpOptions);
-  }
 }

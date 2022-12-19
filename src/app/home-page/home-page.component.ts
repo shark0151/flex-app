@@ -17,10 +17,6 @@ export class HomePageComponent implements OnInit {
   constructor(private MovieService: MovieService, private api:FlexApiService ) { }
 
   ngOnInit(): void {
-    this.api.getcsrf().subscribe((data) => {
-      console.log(data);
-      console.log(data.csrf_token);
-    });
     this.MovieService.getCategories().subscribe((data) => {
       let parse = JSON.parse(JSON.stringify(data));
       Categories.setCategories(parse.genres);
