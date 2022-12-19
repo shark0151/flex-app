@@ -4,15 +4,16 @@ import { StorageService } from './storage.service';
 import { Observable } from 'rxjs';
 const AUTH_API = 'https://flex-api-45ah.onrender.com/';
 const httpOptions = {
-  headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
-  withCredentials: true
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+  withCredentials: true,
+  observe: 'response' as 'response'
 };
 @Injectable({
   providedIn: 'root'
 })
 export class FlexApiService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   login(name: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', {
