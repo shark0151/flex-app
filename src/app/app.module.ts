@@ -66,7 +66,10 @@ import { HttpClientXsrfModule } from '@angular/common/http';
     HttpClientModule,
     MatInputModule,
     ReactiveFormsModule,
-    HttpClientXsrfModule
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'flexy-psifi.x-csrf-token',
+      headerName: 'X-XSRF-TOKEN',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent],
