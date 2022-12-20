@@ -2,6 +2,16 @@
   flex: 1 1 auto;
 }
 
+.toolbar-wide {
+
+  width: 100%;
+}
+
+.toolbar-narrow {
+  display: none;
+
+}
+
 .hideShowToolbar {
   -webkit-transition: all .25s ease-in-out !important;
   -moz-transition: all .25s ease-in-out !important;
@@ -26,11 +36,11 @@
   right: 0;
   z-index: 100;
   background-image: linear-gradient(to bottom, #000000 0%, #00000000 100%);
-  
+
   background-color: transparent;
 }
 
-.button-highlighted{
+.button-highlighted {
   background-image: linear-gradient(to right bottom, #fb00ff 0%, #ff0048 100%);
   color: #ffffff;
   scale: 1.1;
@@ -38,20 +48,38 @@
   transition: all .25s ease-in-out !important;
 }
 
-.button-normal{
+.button-normal {
   margin: 10px;
+  width: 10%;
   color: #ffffff;
   transition: all .25s ease-in-out !important;
 }
-.button-normal:hover{
+
+.button-normal-mini {
+  margin: 10px;
+  width: 100%;
+  color: #ffffff;
+  transition: all .25s ease-in-out !important;
+}
+
+.button-highlighted-mini {
+  background-image: linear-gradient(to right bottom, #fb00ff 0%, #ff0048 100%);
+  color: #ffffff;
+  scale: 1.1;
+  width: 100%;
+  margin: 10px;
+  transition: all .25s ease-in-out !important;
+}
+
+.button-normal:hover {
   scale: 1.1;
 }
 
-.settings-button{
-  
+.settings-button {
+
   transition: all .5s ease-in-out !important;
 }
 
-.settings-button:hover{
+.settings-button:hover {
   transform: rotate(180deg);
 }

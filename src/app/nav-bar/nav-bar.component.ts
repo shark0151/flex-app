@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Nav } from '../interfaces/navbar';
 import { Router } from '@angular/router';
 @Component({
@@ -16,7 +17,38 @@ export class NavBarComponent implements OnInit {
   prop: Nav = {
     title: 'Test',
   };
-  constructor(private router: Router) {}
+  currentScreenSize?: string;
+  isSmallScreen = false;
+
+  // Create a map to display breakpoint names for demonstration purposes.
+  displayNameMap = new Map([
+    [Breakpoints.XSmall, 'XSmall'],
+    [Breakpoints.Small, 'Small'],
+    [Breakpoints.Medium, 'Medium'],
+    [Breakpoints.Large, 'Large'],
+    [Breakpoints.XLarge, 'XLarge'],
+    [Breakpoints.Handset, 'Handset'],
+  ]);
+  constructor(private router: Router, breakpointObserver: BreakpointObserver, private ref: ChangeDetectorRef) {
+    breakpointObserver
+      .observe([
+        '(max-width: 800px)',
+        '(min-width: 801px)',
+      ])
+      .subscribe(result => {
+        for (const query of Object.keys(result.breakpoints)) {
+          if (result.breakpoints[query]) {
+            this.currentScreenSize = query;
+            if (query === '(max-width: 800px)') {
+              this.isSmallScreen = true;
+            } else {
+              this.isSmallScreen = false;
+            }
+            this.ref.detectChanges();
+          }
+        }
+      });
+  }
 
   ngOnInit(): void {
     this.router.events.subscribe((val) => {

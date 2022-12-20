@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ViewChild,
-  ChangeDetectorRef,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef, AfterViewInit, } from '@angular/core';
 import { Movie, Series } from '../interfaces/movie';
 import { MovieService } from '../services/movie.service';
 import { Categories, Category } from '../interfaces/categories';
@@ -46,7 +39,7 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
   constructor(
     private MovieService: MovieService,
     private ref: ChangeDetectorRef
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getMedia();
@@ -55,7 +48,7 @@ export class MediaLoaderComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {}
+  ngAfterViewInit(): void { }
 
   getMedia(): void {
     if (this.pageType == PageType.Home) {

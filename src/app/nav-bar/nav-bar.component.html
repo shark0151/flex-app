@@ -1,42 +1,83 @@
 <mat-toolbar class="fixed-navbar" color="primary" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
-  <mat-toolbar-row>
-    
-    <span>{{title}}</span>
+  <!--Normal Toolbar-->
+  <mat-toolbar-row [ngClass]="isSmallScreen ? 'toolbar-narrow' : 'toolbar-wide'">
+    <span>Flex</span>
     <span class="example-spacer"></span>
-    <button mat-button class="button-normal" [ngClass]="url == '/home' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Home" (click)="GoHome()">
+    <button mat-button class="button-normal" [ngClass]="url == '/home' ? 'button-highlighted' : 'button-normal'"
+      aria-label="Go To Home" (click)="GoHome()">
       <mat-icon>home</mat-icon>
       Home
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/movies' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Movies" (click)="GoToMovies()">
+    <button mat-button class="button-normal" [ngClass]="url == '/movies' ? 'button-highlighted' : 'button-normal'"
+      aria-label="Go To Movies" (click)="GoToMovies()">
       <mat-icon>movie</mat-icon>
       Movies
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/series' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Series" (click)="GoToSeries()">
+    <button mat-button class="button-normal" [ngClass]="url == '/series' ? 'button-highlighted' : 'button-normal'"
+      aria-label="Go To Series" (click)="GoToSeries()">
       <mat-icon>tv</mat-icon>
       Series
     </button>
-    <button mat-button class="button-normal" [ngClass]="url == '/favorites' ? 'button-highlighted' : 'button-normal'" aria-label="Go To Favorites" (click)="GoToFavorites()">
+    <button mat-button class="button-normal" [ngClass]="url == '/favorites' ? 'button-highlighted' : 'button-normal'"
+      aria-label="Go To Favorites" (click)="GoToFavorites()">
       <mat-icon>favorite</mat-icon>
       Favourites
     </button>
     <span class="example-spacer"></span>
-    <button mat-icon-button  aria-label="Example icon-button with share icon" (click)="GoToLogin()">
+    <button mat-icon-button aria-label="Example icon-button with share icon" (click)="GoToLogin()">
       <mat-icon class="settings-button">settings</mat-icon>
     </button>
   </mat-toolbar-row>
 
-  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+  <!--Small Toolbar-->
+  <mat-toolbar-row [ngClass]="!isSmallScreen ? 'toolbar-narrow' : 'toolbar-wide'">
+    <span>Flex</span>
     <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
-      <mat-icon>settings</mat-icon>
+    <button mat-icon-button aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
+      <mat-icon class="settings-button">menu</mat-icon>
     </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
-      <mat-icon>settings</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="toggleToolbar()">
-      <mat-icon>settings</mat-icon>
-    </button>
-    
   </mat-toolbar-row>
+
+  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+    <button mat-button class="button-normal"
+      [ngClass]="url == '/home' ? 'button-highlighted-mini' : 'button-normal-mini'" aria-label="Go To Home"
+      (click)="GoHome()">
+      <mat-icon>home</mat-icon>
+      Home
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+    <button mat-button class="button-normal"
+      [ngClass]="url == '/movies' ? 'button-highlighted-mini' : 'button-normal-mini'" aria-label="Go To Movies"
+      (click)="GoToMovies()">
+      <mat-icon>movie</mat-icon>
+      Movies
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+    <button mat-button class="button-normal"
+      [ngClass]="url == '/series' ? 'button-highlighted-mini' : 'button-normal-mini'" aria-label="Go To Series"
+      (click)="GoToSeries()">
+      <mat-icon>tv</mat-icon>
+      Series
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+    <button mat-button class="button-normal"
+      [ngClass]="url == '/favorites' ? 'button-highlighted-mini' : 'button-normal-mini'" aria-label="Go To Favorites"
+      (click)="GoToFavorites()">
+      <mat-icon>favorite</mat-icon>
+      Favourites
+    </button>
+  </mat-toolbar-row>
+  <mat-toolbar-row class="hideShowToolbar" [ngClass]="hide ? 'hideToolbar' : 'showToolbar'" aria-haspopup="true">
+    <button mat-button class="button-normal"
+      [ngClass]="url == '/login' ? 'button-highlighted-mini' : 'button-normal-mini'" (click)="GoToLogin()">
+      <mat-icon>account_circle</mat-icon>
+      Account
+    </button>
+  </mat-toolbar-row>
+
+
 </mat-toolbar>
 <!-- you would probaby add a empty container here and dynamically change it to whatever component you want to use-->
