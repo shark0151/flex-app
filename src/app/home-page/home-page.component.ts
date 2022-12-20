@@ -14,7 +14,7 @@ export class HomePageComponent implements OnInit {
   categories: Category[] = [];
 
 
-  constructor(private MovieService: MovieService, private api:FlexApiService ) { }
+  constructor(private MovieService: MovieService, private api: FlexApiService) { }
 
   ngOnInit(): void {
     this.MovieService.getCategories().subscribe((data) => {

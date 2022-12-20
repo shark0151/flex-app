@@ -26,7 +26,9 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.flexApi.getCsrf();
+    this.flexApi.getCsrf().subscribe((data) => {
+      console.log(data);
+    });
     if (this.storageService.isLoggedIn()) {
       this.isLoggedIn = true;
     }
