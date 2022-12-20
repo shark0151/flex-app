@@ -17,7 +17,6 @@ mat-card {
   position: relative;
   margin: 0 auto;
   max-width: 700px;
-  min-height: 300px;
   border-radius: 8px;
 }
 
@@ -33,8 +32,8 @@ mat-card-content {
 }
 
 .login-button {
-  margin-top: 20px;
+
   display: block;
   width: 80%;
-  margin: 20px auto;
+  margin: 40px auto;
 }
