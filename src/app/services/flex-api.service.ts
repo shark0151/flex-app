@@ -40,5 +40,7 @@ export class FlexApiService {
       is_TV
     }, httpOptions);
   }
-
+  getCsrf(): Observable<any> {
+    return this.http.get(AUTH_API + 'csrf');
+  }
 }
