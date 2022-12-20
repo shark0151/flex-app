@@ -6,7 +6,8 @@ const AUTH_API = 'https://flex-api-45ah.onrender.com/';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }),
   withCredentials: true,
-  observe: 'response' as 'response'
+  //observe: 'response' as 'response' //if you want to get the full response. but then it needs to change how it saves the user in storage.service.ts like this:
+  // this.storageService.saveUser(data.body);
 };
 @Injectable({
   providedIn: 'root'
