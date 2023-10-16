@@ -23,6 +23,6 @@ jobs:
         dotnet-version: 6.0.x
     - run: dotnet nuget list source
     - run: dotnet nuget remove source nuget.org
-    - run: dotnet nuget add source ${{ vars.NUGET_FEED_SOURCE }} --name ${{ vars.NUGET_FEED_NAME }}
+    - run: dotnet nuget add source ${{ Env.NUGET_FEED_SOURCE }} --name ${{ Env.NUGET_FEED_NAME }}
     - run: dotnet tool update docfx -g --add-source https://api.nuget.org/v3/index.json
 
