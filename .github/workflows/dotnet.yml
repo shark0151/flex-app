@@ -21,6 +21,7 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - run: dotnet nuget list source
     - run: dotnet nuget remove source nuget
     - run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }}
     - run: dotnet tool update docfx -g --add-source https://api.nuget.org/v3/index.json
