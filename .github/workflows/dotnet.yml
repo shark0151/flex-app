@@ -10,8 +10,8 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 env:
-  source: ${{ vars.NUGET_FEED_SOURCE }}
-  namn: ${{ vars.NUGET_FEED_NAME }}
+  source: bla
+  namn: blu
 jobs:
   build:
 
