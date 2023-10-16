@@ -10,13 +10,13 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 env:
-  source: bla
-  namn: blu
+  source: ${{ env.NUGET_FEED_SOURCE }}
+  namn: ${{ env.NUGET_FEED_NAME }}
 jobs:
   build:
 
     runs-on: ubuntu-latest
-
+    environment: Env
     steps:
     - uses: actions/checkout@v3
     - name: Setup .NET
@@ -25,6 +25,6 @@ jobs:
         dotnet-version: 6.0.x
     - run: dotnet nuget list source
     - run: dotnet nuget remove source nuget.org
-    - run: dotnet nuget add source ${{ env.source }} --name ${{ env.namn }}
+    - run: dotnet nuget add source ${{ vars.NUGET_FEED_SOURCE }} --name ${{ vars.NUGET_FEED_NAME }}
     - run: dotnet tool update docfx -g --add-source https://api.nuget.org/v3/index.json
 
