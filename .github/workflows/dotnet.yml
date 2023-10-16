@@ -9,9 +9,7 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
-env:
-  source: ${{ env.NUGET_FEED_SOURCE }}
-  namn: ${{ env.NUGET_FEED_NAME }}
+
 jobs:
   build:
 
