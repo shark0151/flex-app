@@ -1,28 +1,30 @@
-# This workflow will build a .NET project
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
-
-name: .NET
+name: Docs
 
 on:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+    - main
   workflow_dispatch:
 
-jobs:
-  build:
+env:
+  nuget_feed_name: 'DCR.Dev2'
+  nuget_feed_source: 'https://pkgs.dev.azure.com/myteo/DCRSolutions/_packaging/DCR.dev.2/nuget/v3/index.json'
 
+jobs:
+  publish-docs:
     runs-on: ubuntu-latest
-    environment: Env
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Dotnet Setup
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
-    - run: dotnet nuget list source
-    - run: dotnet nuget remove source nuget.org
-    - run: dotnet nuget add source ${{ vars.NUGET_FEED_SOURCE }} --name ${{ vars.NUGET_FEED_NAME }}
-    - run: dotnet tool update docfx -g --add-source https://api.nuget.org/v3/index.json
+        dotnet-version: 7.x
 
+    - run: dotnet nuget remove source nuget.org
+
+    - name: Auth NuGet
+      run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username az --password ${{ secrets.AZURE_DEVOPS_TOKEN }}
+
+    - run: dotnet tool update docfx -g
+    
